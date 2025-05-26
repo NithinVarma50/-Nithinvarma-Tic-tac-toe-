@@ -3,33 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe - Tournament Mode</title>
+    <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="game-container">
-        <div class="mode-selector">
-            <h2>Tournament Mode</h2>
-            <select id="opponent-type">
-                <option value="human">vs Human</option>
-                <option value="computer">vs Computer</option>
-            </select>
-            <select id="difficulty" style="display: none;">
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
-            </select>
-            <button id="start-tournament">Start Tournament</button>
-        </div>
-        
-        <div class="tournament-info">
-            <div class="score-board">
-                <div class="player1-score">Player 1: <span>0</span></div>
-                <div class="player2-score">Player 2: <span>0</span></div>
-            </div>
-            <div class="round-info">Round: <span>1</span>/5</div>
-        </div>
-
         <div class="game-board">
             <div class="cell" data-index="0"></div>
             <div class="cell" data-index="1"></div>
@@ -41,7 +19,6 @@
             <div class="cell" data-index="7"></div>
             <div class="cell" data-index="8"></div>
         </div>
-
         <div class="game-status"></div>
     </div>
     <script type="module" src="js/main.js"></script>
