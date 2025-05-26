@@ -326,6 +326,21 @@
             <input type="text" id="player1Name" value="Player 1" style="padding: 5px; margin: 5px 0; border-radius: 4px; border: 1px solid #ccc;">
         </div>
         <div>
+            <label for="player2Type">Player 2:</label>
+            <select id="player2Type" onchange="toggleTournamentComputerOptions()" style="padding: 5px; margin: 5px 0; border-radius: 4px; border: 1px solid #ccc;">
+                <option value="human">Human</option>
+                <option value="computer">Computer</option>
+            </select>
+        </div>
+        <div id="tournamentComputerOptions" style="display: none; margin-bottom: 10px;">
+            <label for="tournamentAIDifficulty">AI Difficulty:</label>
+            <select id="tournamentAIDifficulty" style="padding: 5px; margin: 5px 0; border-radius: 4px; border: 1px solid #ccc;">
+                <option value="easy">Easy</option>
+                <option value="hard" selected>Hard</option>
+                <option value="brutal">Brutal</option>
+            </select>
+        </div>
+        <div>
             <label for="player2Name">Player 2 (O) Name:</label>
             <input type="text" id="player2Name" value="Player 2" style="padding: 5px; margin: 5px 0; border-radius: 4px; border: 1px solid #ccc;">
         </div>
@@ -509,6 +524,8 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
         
         // Tournament State
         let isTournamentMode = false;
+        let isTournamentVsComputer = false; // NEW: Track if tournament is vs computer
+        let tournamentAIDifficulty = 'hard'; // NEW: Track AI difficulty for tournament
         let tournamentPlayers = [{ name: 'Player 1', score: 0 }, { name: 'Player 2', score: 0 }];
         let currentTournamentRound = 0; // 0 means not started, 1-based index for rounds
         const tournamentRounds = [
@@ -937,9 +954,13 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
                 
                 // Update the UI
                 updateUltimateUI();
-
                 // Trigger AI move if applicable AFTER UI update and player switch
-                triggerAIMove(); 
+                // If in tournament vs computer, only trigger AI if it's O's turn
+                if (isTournamentVsComputer && currentPlayer === 'O' && gameActive) {
+                    triggerAIMove();
+                } else if (!isTournamentVsComputer) {
+                    triggerAIMove();
+                }
 
             } else if (ultimateBoard[boardIndex][cellIndex] !== '') {
                 showRoast(roasts[Math.floor(Math.random() * roasts.length)]);
@@ -1114,7 +1135,12 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
                 // Trigger AI move *after* the lock is released and player has been potentially switched
                 // This check needs to be outside the 'valid move' block to handle AI trigger after invalid memory/shuffle moves too.
                 console.log(`handleClick Finally: Checking for AI trigger. isAI=${isPlayingAgainstAI}, current=${currentPlayer}, active=${gameActive}`);
-                triggerAIMove();
+                // If in tournament vs computer, only trigger AI if it's O's turn
+                if (isTournamentVsComputer && currentPlayer === 'O' && gameActive) {
+                    triggerAIMove();
+                } else if (!isTournamentVsComputer) {
+                    triggerAIMove();
+                }
             }
         }
 
@@ -1496,15 +1522,18 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
 
         function initializeTournament() {
             const player1Name = document.getElementById('player1Name').value || 'Player 1';
-            const player2Name = document.getElementById('player2Name').value || 'Player 2';
-
+            const player2Type = document.getElementById('player2Type').value;
+            const player2Name = player2Type === 'computer' ? 'Computer' : (document.getElementById('player2Name').value || 'Player 2');
+            isTournamentVsComputer = player2Type === 'computer';
+            if (isTournamentVsComputer) {
+                tournamentAIDifficulty = document.getElementById('tournamentAIDifficulty').value;
+            }
             isTournamentMode = true;
             tournamentPlayers = [
                 { name: player1Name, score: 0 },
                 { name: player2Name, score: 0 }
             ];
             currentTournamentRound = 0; // Will be incremented by nextTournamentRound to 1
-
             hideAllScreens();
             tournamentSetupScreen.style.display = 'none';
             tournamentProgressDisplay.style.display = 'block';
@@ -1514,7 +1543,6 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             // Ensure the main status/roast displays are hidden initially in tournament
             statusDisplay.style.display = 'none'; 
             roastDisplay.style.display = 'none';
-
             nextTournamentRound(); // Start the first round
         }
         
@@ -1572,7 +1600,6 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
         
         function startTournamentRound() {
             const roundInfo = tournamentRounds[currentTournamentRound - 1];
-            
             // Update progress display
             document.getElementById('tournamentRoundTitle').textContent = 
                 `Round ${currentTournamentRound}: ${roundInfo.name} (${roundInfo.points} ${roundInfo.points === 1 ? 'point' : 'points'})`;
@@ -1580,16 +1607,13 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
                 `${tournamentPlayers[0].name} (X): ${tournamentPlayers[0].score}`;
             document.getElementById('tournamentPlayer2Info').textContent = 
                 `${tournamentPlayers[1].name} (O): ${tournamentPlayers[1].score}`;
-            
             tournamentProgressDisplay.style.display = 'block'; // Ensure progress is visible
             nextRoundButton.style.display = 'none'; // Hide button until round ends
             statusDisplay.style.display = 'block'; // Show status for the game round
             roastDisplay.style.display = 'block'; // Show roast area
-
             // Set the game mode for the current round
             // This will also call resetGame internally to prepare the board
             toggleMode(roundInfo.mode); 
-            
             // Ensure the correct board is visible after toggleMode (handles early return case)
             if (roundInfo.mode === 'ultimate') {
                 classicBoard.style.display = 'none';
@@ -1598,6 +1622,17 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             } else {
                 classicBoard.style.display = 'grid';
                 ultimateBoardElement.style.display = 'none';
+            }
+            // If tournament vs computer, set AI flag and difficulty for this round
+            if (isTournamentVsComputer) {
+                isPlayingAgainstAI = true;
+                aiDifficulty = tournamentAIDifficulty;
+            } else {
+                isPlayingAgainstAI = false;
+            }
+            // If computer is O and starts, trigger AI move
+            if (isTournamentVsComputer && currentPlayer === 'O') {
+                setTimeout(triggerAIMove, 600);
             }
         }
         
@@ -1849,6 +1884,21 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             console.log(`showGameControls: newGameButton display: ${newGameButton.style.display}, backToModesButton display: ${backToModesButton.style.display}`); // Log exit
         }
         // ============================== 
+
+        function toggleTournamentComputerOptions() {
+            const type = document.getElementById('player2Type').value;
+            const aiOpts = document.getElementById('tournamentComputerOptions');
+            const p2Name = document.getElementById('player2Name');
+            if (type === 'computer') {
+                aiOpts.style.display = 'block';
+                p2Name.value = 'Computer';
+                p2Name.disabled = true;
+            } else {
+                aiOpts.style.display = 'none';
+                p2Name.value = 'Player 2';
+                p2Name.disabled = false;
+            }
+        }
     </script>
 </body>
 </html> 
