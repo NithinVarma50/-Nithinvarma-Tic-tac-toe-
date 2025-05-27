@@ -1643,7 +1643,6 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             const roundInfo = tournamentRounds[currentTournamentRound - 1];
             let pointsAwarded = roundInfo.points;
             let winnerName = "";
-
             if (winner === 'X') {
                 tournamentPlayers[0].score += pointsAwarded;
                 winnerName = tournamentPlayers[0].name;
@@ -1666,11 +1665,16 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             }
             
             gameActive = false; // Ensure game stops
-            nextRoundButton.style.display = 'inline-block'; // Show button to proceed
-            roastDisplay.textContent = ''; // Clear any roast message
-            
-            // Clear any pending animation timeouts from memory/shuffle mode
-            clearAllCellTimeouts();
+            nextRoundButton.style.display = 'none'; // Hide button for seamless auto-progression
+
+            // Automatically transition to the next round after a short delay
+            setTimeout(() => {
+                if (currentTournamentRound < totalTournamentRounds) {
+                    nextTournamentRound();
+                } else {
+                    showTournamentResults();
+                }
+            }, 1800); // 1.8 seconds for user to see result
         }
         
         function showTournamentResults() {
@@ -1901,4 +1905,4 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
         }
     </script>
 </body>
-</html> 
+</html>
