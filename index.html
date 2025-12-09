@@ -8,8 +8,10 @@
             --secondary: #009ffd;
             --accent: #ff4754;
             --background: #1a1a2e;
-            --win-pulse-color-x: rgba(255, 71, 84, 0.6); /* Accent color with alpha */
-            --win-pulse-color-o: rgba(46, 204, 113, 0.6); /* O color with alpha */
+            --win-pulse-color-x: rgba(255, 71, 84, 0.6);
+            /* Accent color with alpha */
+            --win-pulse-color-o: rgba(46, 204, 113, 0.6);
+            /* O color with alpha */
         }
 
         body {
@@ -23,7 +25,7 @@
             margin: 0;
             padding: 20px;
         }
-        
+
         .title {
             font-size: 2.8em;
             margin: 10px 0;
@@ -69,7 +71,8 @@
             font-size: 3em;
             cursor: pointer;
             transition: all 0.3s ease;
-            position: relative; /* Needed for potential future animations */
+            position: relative;
+            /* Needed for potential future animations */
         }
 
         .cell.popping {
@@ -79,11 +82,22 @@
         .cell.winning-cell {
             animation: winPulse 1.2s infinite ease-in-out;
         }
-        .cell.winning-cell.x { --win-pulse-color: var(--win-pulse-color-x); }
-        .cell.winning-cell.o { --win-pulse-color: var(--win-pulse-color-o); }
 
-        .cell.x { color: var(--accent); }
-        .cell.o { color: #2ecc71; }
+        .cell.winning-cell.x {
+            --win-pulse-color: var(--win-pulse-color-x);
+        }
+
+        .cell.winning-cell.o {
+            --win-pulse-color: var(--win-pulse-color-o);
+        }
+
+        .cell.x {
+            color: var(--accent);
+        }
+
+        .cell.o {
+            color: #2ecc71;
+        }
 
         /* Ultimate Tic Tac Toe Styling */
         .ultimate-board {
@@ -132,7 +146,8 @@
             font-size: 1.5em;
             cursor: pointer;
             transition: all 0.3s ease;
-            position: relative; /* Needed for potential future animations */
+            position: relative;
+            /* Needed for potential future animations */
         }
 
         .small-cell.popping {
@@ -143,11 +158,22 @@
         .small-cell.winning-cell {
             animation: winPulse 1.2s infinite ease-in-out;
         }
-        .small-cell.winning-cell.x { --win-pulse-color: var(--win-pulse-color-x); }
-        .small-cell.winning-cell.o { --win-pulse-color: var(--win-pulse-color-o); }
 
-        .small-cell.x { color: var(--accent); }
-        .small-cell.o { color: #2ecc71; }
+        .small-cell.winning-cell.x {
+            --win-pulse-color: var(--win-pulse-color-x);
+        }
+
+        .small-cell.winning-cell.o {
+            --win-pulse-color: var(--win-pulse-color-o);
+        }
+
+        .small-cell.x {
+            color: var(--accent);
+        }
+
+        .small-cell.o {
+            color: #2ecc71;
+        }
 
         .board-win-marker {
             position: absolute;
@@ -178,13 +204,16 @@
             text-align: center;
             opacity: 0.9;
             transition: opacity 0.3s ease, transform 0.3s ease;
-            transform: translateY(10px); /* Start slightly lower */
-            opacity: 0; /* Start hidden */
+            transform: translateY(10px);
+            /* Start slightly lower */
+            opacity: 0;
+            /* Start hidden */
         }
 
         #roast.roast-visible {
             opacity: 0.9;
-            transform: translateY(0); /* Slide up to original position */
+            transform: translateY(0);
+            /* Slide up to original position */
             animation: roastAppear 0.3s ease-out;
         }
 
@@ -199,7 +228,8 @@
             font-size: 1.1em;
             font-weight: 500;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Added default shadow */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            /* Added default shadow */
         }
 
         button:hover {
@@ -208,8 +238,10 @@
         }
 
         button:active {
-            transform: translateY(1px) scale(0.98); /* Click feedback */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Slightly reduced shadow */
+            transform: translateY(1px) scale(0.98);
+            /* Click feedback */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            /* Slightly reduced shadow */
         }
 
         .mode-toggle {
@@ -235,8 +267,13 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .board.shuffle {
@@ -255,19 +292,39 @@
             border: 3px solid gold;
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
             animation: winPulse 1.2s infinite ease-in-out;
-            --win-pulse-color: rgba(255, 215, 0, 0.7); /* Gold color for pulse */
+            --win-pulse-color: rgba(255, 215, 0, 0.7);
+            /* Gold color for pulse */
         }
 
         @keyframes cellPop {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         @keyframes winPulse {
-            0% { background-color: rgba(255, 255, 255, 0.08); box-shadow: 0 0 0px var(--win-pulse-color); }
-            50% { background-color: var(--win-pulse-color); box-shadow: 0 0 15px var(--win-pulse-color); }
-            100% { background-color: rgba(255, 255, 255, 0.08); box-shadow: 0 0 0px var(--win-pulse-color); }
+            0% {
+                background-color: rgba(255, 255, 255, 0.08);
+                box-shadow: 0 0 0px var(--win-pulse-color);
+            }
+
+            50% {
+                background-color: var(--win-pulse-color);
+                box-shadow: 0 0 15px var(--win-pulse-color);
+            }
+
+            100% {
+                background-color: rgba(255, 255, 255, 0.08);
+                box-shadow: 0 0 0px var(--win-pulse-color);
+            }
         }
 
         @keyframes roastAppear {
@@ -275,6 +332,7 @@
                 opacity: 0;
                 transform: translateY(10px);
             }
+
             to {
                 opacity: 0.9;
                 transform: translateY(0);
@@ -301,40 +359,87 @@
             border-color: var(--secondary);
             box-shadow: 0 0 10px rgba(0, 159, 253, 0.4);
         }
-
     </style>
 </head>
+
 <body>
     <h1 class="title">Nithin Varma Tic Tac Toe</h1>
-    
+
     <div class="mode-toggle">
         <button onclick="toggleMode('classic')" id="classicMode">Classic Mode</button>
         <button onclick="toggleMode('memory')" id="memoryMode">Memory Mode</button>
         <button onclick="toggleMode('shuffle')" id="shuffleMode">Shuffled Mode</button>
         <button onclick="toggleMode('ultimate')" id="ultimateMode">Ultimate Mode</button>
         <button onclick="toggleMode('bolt')" id="boltMode">Bolt Mode</button>
+        <button onclick="toggleMode('pvp')" id="pvpMode">PVP Online</button> <!-- Added PVP Button -->
         <button onclick="toggleMode('computer')" id="computerMode">Play vs Computer</button>
         <button onclick="startTournamentSetup()" id="tournamentModeBtn">Tournament Mode</button>
         <button onclick="showAboutScreen()" id="aboutGameBtn">About Game</button>
     </div>
 
+    <!-- PVP Setup Screen -->
+    <div id="pvpSetupScreen"
+        style="display: none; background: rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 12px; margin: 15px 0; width: 90%; max-width: 500px; text-align: center; box-shadow: 0 8px 32px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
+        <h2 style="margin-top: 0; color: var(--secondary);">PVP Online Mode</h2>
+        <p style="margin-bottom: 20px;">Play with a friend on a different device!</p>
+
+        <div id="pvpInitialOptions">
+            <button onclick="createPVPGame()" style="width: 80%; margin: 10px 0;">Create Game (Host)</button>
+            <div style="margin: 10px 0; font-weight: bold;">- OR -</div>
+            <button onclick="showJoinInput()"
+                style="width: 80%; margin: 10px 0; background: linear-gradient(45deg, #FF512F, #DD2476);">Join
+                Game</button>
+        </div>
+
+        <div id="pvpHostArea" style="display: none;">
+            <h3>Your Game Code:</h3>
+            <div id="myPeerId"
+                style="font-size: 2em; letter-spacing: 2px; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; user-select: text; margin: 15px 0; border: 2px dashed var(--secondary);">
+                Generating...</div>
+            <p>Share this code with your friend to play!</p>
+            <div style="margin-top: 20px;">
+                <span class="loader"
+                    style="display: inline-block; width: 20px; height: 20px; border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: #fff; animation: spin 1s ease-in-out infinite;"></span>
+                Waiting for opponent...
+            </div>
+            <button onclick="cancelPVP()"
+                style="margin-top: 20px; background: rgba(255, 255, 255, 0.1);">Cancel</button>
+        </div>
+
+        <div id="pvpJoinArea" style="display: none;">
+            <h3>Enter Host Code:</h3>
+            <input type="text" id="remotePeerIdInput" placeholder="Enter Code Here"
+                style="padding: 15px; font-size: 1.2em; border-radius: 8px; border: none; width: 80%; text-align: center; margin: 15px 0; background: rgba(255, 255, 255, 0.9); color: #333;">
+            <br>
+            <button onclick="joinPVPGame()" style="width: 60%; margin-top: 10px;">Connect & Play</button>
+            <br>
+            <button onclick="cancelPVP()" style="margin-top: 10px; background: rgba(255, 255, 255, 0.1);">Back</button>
+        </div>
+
+        <div id="pvpStatus" style="color: #ff4754; margin-top: 15px; min-height: 24px;"></div>
+    </div>
+
     <!-- Tournament Setup Screen -->
-    <div id="tournamentSetup" style="display: none; background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 8px; margin: 15px 0; width: 90%; max-width: 400px; text-align: center;">
+    <div id="tournamentSetup"
+        style="display: none; background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 8px; margin: 15px 0; width: 90%; max-width: 400px; text-align: center;">
         <h2>Tournament Setup</h2>
         <div>
             <label for="player1Name">Player 1 (X) Name:</label>
-            <input type="text" id="player1Name" value="Player 1" style="padding: 5px; margin: 5px 0; border-radius: 4px; border: 1px solid #ccc;">
+            <input type="text" id="player1Name" value="Player 1"
+                style="padding: 5px; margin: 5px 0; border-radius: 4px; border: 1px solid #ccc;">
         </div>
         <div>
             <label for="player2Type">Player 2:</label>
-            <select id="player2Type" onchange="toggleTournamentComputerOptions()" style="padding: 5px; margin: 5px 0; border-radius: 4px; border: 1px solid #ccc;">
+            <select id="player2Type" onchange="toggleTournamentComputerOptions()"
+                style="padding: 5px; margin: 5px 0; border-radius: 4px; border: 1px solid #ccc;">
                 <option value="human">Human</option>
                 <option value="computer">Computer</option>
             </select>
         </div>
         <div id="tournamentComputerOptions" style="display: none; margin-bottom: 10px;">
             <label for="tournamentAIDifficulty">AI Difficulty:</label>
-            <select id="tournamentAIDifficulty" style="padding: 5px; margin: 5px 0; border-radius: 4px; border: 1px solid #ccc;">
+            <select id="tournamentAIDifficulty"
+                style="padding: 5px; margin: 5px 0; border-radius: 4px; border: 1px solid #ccc;">
                 <option value="easy">Easy</option>
                 <option value="hard" selected>Hard</option>
                 <option value="brutal">Brutal</option>
@@ -342,7 +447,8 @@
         </div>
         <div>
             <label for="player2Name">Player 2 (O) Name:</label>
-            <input type="text" id="player2Name" value="Player 2" style="padding: 5px; margin: 5px 0; border-radius: 4px; border: 1px solid #ccc;">
+            <input type="text" id="player2Name" value="Player 2"
+                style="padding: 5px; margin: 5px 0; border-radius: 4px; border: 1px solid #ccc;">
         </div>
         <!-- Optional: Add round selection here later if needed -->
         <button onclick="initializeTournament()">Start Tournament</button>
@@ -350,13 +456,15 @@
     </div>
 
     <!-- Computer Game Setup Screen -->
-    <div id="computerSetupScreen" style="display: none; background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 8px; margin: 15px 0; width: 90%; max-width: 450px; text-align: center;">
+    <div id="computerSetupScreen"
+        style="display: none; background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 8px; margin: 15px 0; width: 90%; max-width: 450px; text-align: center;">
         <h2>Play vs Computer Setup</h2>
-        
+
         <!-- Mode Selection -->
         <div style="margin-bottom: 15px;">
             <h4>Select Game Mode:</h4>
-            <select id="computerGameMode" style="padding: 8px; margin: 5px 0; border-radius: 4px; border: 1px solid #ccc; width: 80%;">
+            <select id="computerGameMode"
+                style="padding: 8px; margin: 5px 0; border-radius: 4px; border: 1px solid #ccc; width: 80%;">
                 <option value="classic">Classic</option>
                 <option value="memory">Memory</option>
                 <option value="shuffle">Shuffled</option>
@@ -370,8 +478,10 @@
             <h4>Select Difficulty:</h4>
             <div style="display: flex; justify-content: center; gap: 10px;">
                 <button onclick="setAIDifficulty('easy')" class="difficulty-btn" data-difficulty="easy">Easy</button>
-                <button onclick="setAIDifficulty('hard')" class="difficulty-btn active" data-difficulty="hard">Hard</button> 
-                <button onclick="setAIDifficulty('brutal')" class="difficulty-btn" data-difficulty="brutal">Brutal</button>
+                <button onclick="setAIDifficulty('hard')" class="difficulty-btn active"
+                    data-difficulty="hard">Hard</button>
+                <button onclick="setAIDifficulty('brutal')" class="difficulty-btn"
+                    data-difficulty="brutal">Brutal</button>
             </div>
             <input type="hidden" id="aiDifficulty" value="hard"> <!-- Default to hard -->
         </div>
@@ -381,7 +491,8 @@
     </div>
 
     <!-- Tournament Progress Display -->
-    <div id="tournamentProgress" style="display: none; background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 8px; margin: 10px 0; width: 90%; max-width: 500px; text-align: center;">
+    <div id="tournamentProgress"
+        style="display: none; background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 8px; margin: 10px 0; width: 90%; max-width: 500px; text-align: center;">
         <h3 id="tournamentRoundTitle">Round X: Mode</h3>
         <div style="display: flex; justify-content: space-around; margin-top: 10px; font-size: 1.1em;">
             <span id="tournamentPlayer1Info">Player 1: 0</span>
@@ -393,8 +504,10 @@
         <h3>Classic Game Rules:</h3>
         <ul style="text-align: left; padding: 0 20px; font-size: 0.95em;">
             <li>Players take turns placing their mark (X or O) in an empty square.</li>
-            <li>The first player to get three of their marks in a row (up, down, across, or diagonally) is the winner.</li>
-            <li>When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends in a draw.</li>
+            <li>The first player to get three of their marks in a row (up, down, across, or diagonally) is the winner.
+            </li>
+            <li>When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends in a
+                draw.</li>
         </ul>
     </div>
 
@@ -408,7 +521,7 @@
             <li>Once the game ends, all marks will be revealed.</li>
         </ul>
     </div>
-    
+
     <div id="shuffleRules" class="rules mode-description">
         <h3>Shuffled Mode Rules:</h3>
         <ul style="text-align: left; padding: 0 20px; font-size: 0.95em;">
@@ -419,7 +532,7 @@
             <li>Are you up for this mind-bending challenge?</li>
         </ul>
     </div>
-    
+
     <div id="ultimateRules" class="rules mode-description">
         <h3>Ultimate Tic Tac Toe Rules:</h3>
         <ul style="text-align: left; padding: 0 20px; font-size: 0.95em;">
@@ -454,7 +567,7 @@
         <div class="cell" data-index="7"></div>
         <div class="cell" data-index="8"></div>
     </div>
-    
+
     <div class="ultimate-board" id="ultimateBoard" style="display: none;">
         <!-- 9 small boards, each with 9 cells will be generated by JavaScript -->
     </div>
@@ -462,11 +575,14 @@
     <div id="status">Current Player: <span style="color: var(--accent)">X</span></div>
     <div id="roast"></div>
     <button onclick="resetGame()">New Game</button>
-    <button id="backToModesBtn" onclick="goBackToModes()" style="display: none; margin-left: 10px;">Back to Modes</button> 
-    <button id="nextRoundBtn" onclick="nextTournamentRound()" style="display: none; margin-left: 10px;">Next Round</button>
+    <button id="backToModesBtn" onclick="goBackToModes()" style="display: none; margin-left: 10px;">Back to
+        Modes</button>
+    <button id="nextRoundBtn" onclick="nextTournamentRound()" style="display: none; margin-left: 10px;">Next
+        Round</button>
 
     <!-- Tournament Results Screen -->
-    <div id="tournamentResults" style="display: none; background: rgba(42, 42, 114, 0.9); padding: 30px; border-radius: 15px; margin: 20px 0; width: 90%; max-width: 500px; text-align: center; border: 2px solid var(--secondary); box-shadow: 0 0 20px rgba(0, 159, 253, 0.5);">
+    <div id="tournamentResults"
+        style="display: none; background: rgba(42, 42, 114, 0.9); padding: 30px; border-radius: 15px; margin: 20px 0; width: 90%; max-width: 500px; text-align: center; border: 2px solid var(--secondary); box-shadow: 0 0 20px rgba(0, 159, 253, 0.5);">
         <h2 id="tournamentWinner" style="color: gold; font-size: 2em; margin-bottom: 15px;">Champion: Player X</h2>
         <h3>Final Score</h3>
         <p id="tournamentFinalScoreP1" style="font-size: 1.2em;">Player 1: X points</p>
@@ -479,39 +595,59 @@
     </div>
 
     <!-- About Game Screen -->
-    <div id="aboutGameScreen" style="display: none; background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 8px; margin: 15px 0; width: 90%; max-width: 600px; text-align: left; line-height: 1.6;">
+    <div id="aboutGameScreen"
+        style="display: none; background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 8px; margin: 15px 0; width: 90%; max-width: 600px; text-align: left; line-height: 1.6;">
         <h2>About the Game</h2>
-        <p>Strategic Tic Tac Toe is a fresh take on the classic game, adding memory challenges and spatial twists that make every round more unpredictable and exciting. With multiple modes and a tournament feature, it's designed for both casual fun and serious face-offs.</p>
+        <p>Strategic Tic Tac Toe is a fresh take on the classic game, adding memory challenges and spatial twists that
+            make every round more unpredictable and exciting. With multiple modes and a tournament feature, it's
+            designed for both casual fun and serious face-offs.</p>
 
         <h3>Game Modes:</h3>
         <ul>
             <li><strong>Classic Mode</strong><br>
-The original Tic Tac Toe experience with visible moves and standard rules. A familiar favorite for quick and casual games.</li>
+                The original Tic Tac Toe experience with visible moves and standard rules. A familiar favorite for quick
+                and casual games.</li>
             <li><strong>Memory Mode</strong> – <em>Concept by Nithin Varma</em><br>
-A twist where the board is hidden after each turn. Players must remember their moves — one mistake can flip the outcome.</li>
+                A twist where the board is hidden after each turn. Players must remember their moves — one mistake can
+                flip the outcome.</li>
             <li><strong>Shuffled Grid Mode</strong> – <em>Concept by Nithin Varma</em><br>
-The grid slightly shifts positions after each move, testing your memory and spatial tracking.</li>
+                The grid slightly shifts positions after each move, testing your memory and spatial tracking.</li>
             <li><strong>Ultimate Tic Tac Toe</strong> – <em>Discovered online</em><br>
-A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. While there's no single creator, a widely played version was developed by Michael Xing.</li>
+                A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. While there's no single
+                creator, a widely played version was developed by Michael Xing.</li>
             <li><strong>Bolt Mode</strong> – <em>A New Strategic Challenge!</em><br>
-                <p>Bolt Mode is a fast-paced variant of Tic-Tac-Toe where marks disappear based on placement order, creating a dynamic and strategic gameplay experience.</p>
+                <p>Bolt Mode is a fast-paced variant of Tic-Tac-Toe where marks disappear based on placement order,
+                    creating a dynamic and strategic gameplay experience.</p>
                 <strong>How It Works:</strong>
                 <ul>
-                    <li><strong>Standard Tic-Tac-Toe Rules:</strong> Players aim to get three in a row just like traditional Tic-Tac-Toe.</li>
-                    <li><strong>Limited Marks:</strong> Each player can have a maximum of three marks (X's or O's) on the board at a time.</li>
-                    <li><strong>Disappearing Marks:</strong> When a player places their fourth mark, the oldest mark automatically disappears, ensuring only three marks remain on the grid at all times.</li>
-                    <li><strong>Strategic Advantage:</strong> Players must carefully plan their moves, as marks disappear over time. This allows new winning opportunities to emerge while also disrupting the opponent's strategy.</li>
+                    <li><strong>Standard Tic-Tac-Toe Rules:</strong> Players aim to get three in a row just like
+                        traditional Tic-Tac-Toe.</li>
+                    <li><strong>Limited Marks:</strong> Each player can have a maximum of three marks (X's or O's) on
+                        the board at a time.</li>
+                    <li><strong>Disappearing Marks:</strong> When a player places their fourth mark, the oldest mark
+                        automatically disappears, ensuring only three marks remain on the grid at all times.</li>
+                    <li><strong>Strategic Advantage:</strong> Players must carefully plan their moves, as marks
+                        disappear over time. This allows new winning opportunities to emerge while also disrupting the
+                        opponent's strategy.</li>
                 </ul>
             </li>
         </ul>
 
         <h3>Developed By:</h3>
         <p><strong>Nithin Varma</strong></p>
-        
+
         <button onclick="hideAboutScreen()" style="margin-top: 15px;">Back to Modes</button>
     </div>
 
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
     <script>
+        // PVP State
+        let peer = null;
+        let conn = null;
+        let isPVPMode = false;
+        let myPlayerSide = null; // 'X' or 'O'
+        const pvpSetupScreen = document.getElementById('pvpSetupScreen');
+
         let currentPlayer = 'X';
         let gameBoard = Array(9).fill('');
         let gameActive = true;
@@ -521,7 +657,7 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
         let playerXMoves = []; // Track X's moves in order for Bolt mode
         let playerOMoves = []; // Track O's moves in order for Bolt mode
         let isProcessingClick = false; // Flag to prevent rapid click issues
-        
+
         // Tournament State
         let isTournamentMode = false;
         let isTournamentVsComputer = false; // NEW: Track if tournament is vs computer
@@ -536,7 +672,7 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             { mode: 'ultimate', points: 2, name: 'Ultimate' }
         ];
         let totalTournamentRounds = tournamentRounds.length;
-        
+
         // DOM Elements (cache some for performance)
         const statusDisplay = document.getElementById('status');
         const roastDisplay = document.getElementById('roast');
@@ -554,19 +690,147 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
         const aboutGameButton = document.getElementById('aboutGameBtn');       // Cache button
         const aboutGameScreen = document.getElementById('aboutGameScreen');     // Cache screen
         const backToModesButton = document.getElementById('backToModesBtn');   // Cache Back button
-        
+
         // For Ultimate Tic Tac Toe
         let ultimateBoard = Array(9).fill().map(() => Array(9).fill(''));
         let smallBoardWinners = Array(9).fill('');
         let nextBoardIndex = -1; // -1 means any board is valid for the next move
-        
+
         // Store timeout IDs per cell for memory/shuffle modes
         let cellFadeTimeouts = {};
         let cellClearTimeouts = {};
-        
+
         // Store timeout IDs for animations
         let fadeOutTimeoutId = null;
         let clearCellTimeoutId = null;
+
+        // PVP Functions
+        function createPVPGame() {
+            document.getElementById('pvpInitialOptions').style.display = 'none';
+            document.getElementById('pvpHostArea').style.display = 'block';
+
+            peer = new Peer();
+
+            peer.on('open', (id) => {
+                document.getElementById('myPeerId').textContent = id;
+            });
+
+            peer.on('connection', (c) => {
+                conn = c;
+                setupConnection();
+                // Assign sides: Host is X, Guest is O
+                myPlayerSide = 'X';
+                conn.send({ type: 'start', side: 'O', mode: currentMode });
+                startPVPGame();
+            });
+
+            peer.on('error', (err) => {
+                console.error(err);
+                document.getElementById('pvpStatus').textContent = "Connection Error: " + err.type;
+            });
+        }
+
+        function showJoinInput() {
+            document.getElementById('pvpInitialOptions').style.display = 'none';
+            document.getElementById('pvpJoinArea').style.display = 'block';
+        }
+
+        function joinPVPGame() {
+            const hostId = document.getElementById('remotePeerIdInput').value.trim();
+            if (!hostId) {
+                document.getElementById('pvpStatus').textContent = "Please enter a code!";
+                return;
+            }
+
+            document.getElementById('pvpStatus').textContent = "Connecting...";
+            peer = new Peer();
+
+            peer.on('open', (id) => {
+                conn = peer.connect(hostId);
+                setupConnection();
+            });
+
+            peer.on('error', (err) => {
+                console.error(err);
+                document.getElementById('pvpStatus').textContent = "Connection Failed. Check code.";
+            });
+        }
+
+        function setupConnection() {
+            conn.on('open', () => {
+                document.getElementById('pvpStatus').textContent = "Connected!";
+            });
+
+            conn.on('data', (data) => {
+                handlePVPData(data);
+            });
+
+            conn.on('close', () => {
+                alert("Opponent disconnected!");
+                resetToMainMenu();
+            });
+        }
+
+        function handlePVPData(data) {
+            console.log("Received PVP Data:", data);
+
+            if (data.type === 'start') {
+                myPlayerSide = data.side;
+                // Host determines the initial mode.
+                // If the host changed mode *before* guest joined, we sync it here.
+                if (data.mode && data.mode !== currentMode) {
+                    toggleMode(data.mode);
+                }
+                startPVPGame();
+            } else if (data.type === 'move') {
+                // Opponent made a move
+                if (currentMode === 'ultimate') {
+                    handleUltimateClick(data.boardIndex, data.cellIndex, true); // true for remote
+                } else {
+                    handleClick(data.index, true); // true for remote
+                }
+            } else if (data.type === 'reset') {
+                resetGame(true); // true for remote
+            } else if (data.type === 'mode') {
+                // Sync mode change
+                toggleMode(data.mode, true);
+            }
+        }
+
+        function startPVPGame() {
+            isPVPMode = true;
+            document.getElementById('pvpSetupScreen').style.display = 'none';
+            modeToggleButtons.style.display = 'flex'; // Show mode buttons so people can see what mode they are in
+
+            // Disable mode buttons for Guest if we want to enforce Host control, 
+            // but for now let's allow anyone to change mode and sync it.
+
+            resetGame();
+            updateStatus();
+        }
+
+        function cancelPVP() {
+            if (peer) peer.destroy();
+            if (conn) conn.close();
+            resetToMainMenu();
+        }
+
+        function resetToMainMenu() {
+            isPVPMode = false;
+            peer = null;
+            conn = null;
+            myPlayerSide = null;
+
+            document.getElementById('pvpInitialOptions').style.display = 'block';
+            document.getElementById('pvpHostArea').style.display = 'none';
+            document.getElementById('pvpJoinArea').style.display = 'none';
+            document.getElementById('pvpSetupScreen').style.display = 'none';
+            document.getElementById('pvpStatus').textContent = "";
+            document.getElementById('remotePeerIdInput').value = "";
+
+            modeToggleButtons.style.display = 'flex';
+            toggleMode('classic');
+        }
 
         const roasts = [
             // Light & Playful + Slightly Savage
@@ -592,8 +856,8 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             // Use a longer timeout to ensure text stays visible during fade-out if needed
             setTimeout(() => {
                 roastElement.classList.remove('roast-visible');
-                 // Optional: Clear text after fade-out animation completes
-                 // setTimeout(() => roastElement.textContent = '', 300); // Match CSS transition duration
+                // Optional: Clear text after fade-out animation completes
+                // setTimeout(() => roastElement.textContent = '', 300); // Match CSS transition duration
             }, 2000); // How long the roast stays visible before starting to fade
         }
 
@@ -603,7 +867,7 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
                 [0, 3, 6], [1, 4, 7], [2, 5, 8],
                 [0, 4, 8], [2, 4, 6]
             ];
-            return winPatterns.find(pattern => 
+            return winPatterns.find(pattern =>
                 pattern.every(index => gameBoard[index] === currentPlayer)
             );
         }
@@ -614,8 +878,8 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
                 [0, 3, 6], [1, 4, 7], [2, 5, 8],
                 [0, 4, 8], [2, 4, 6]
             ];
-            
-            return winPatterns.find(pattern => 
+
+            return winPatterns.find(pattern =>
                 pattern.every(cellIndex => ultimateBoard[boardIndex][cellIndex] === currentPlayer)
             );
         }
@@ -626,8 +890,8 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
                 [0, 3, 6], [1, 4, 7], [2, 5, 8],
                 [0, 4, 8], [2, 4, 6]
             ];
-            
-            return winPatterns.find(pattern => 
+
+            return winPatterns.find(pattern =>
                 pattern.every(index => smallBoardWinners[index] === currentPlayer)
             );
         }
@@ -648,10 +912,10 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             return ultimateBoard[boardIndex].every(cell => cell !== '');
         }
 
-        function toggleMode(mode) {
+        function toggleMode(mode, fromPeer = false) {
             console.log(`toggleMode entered. Requested mode: ${mode}. Current mode: ${currentMode}`); // Log entry
             // Allow re-clicking computer mode to bring up setup if it was somehow hidden
-            if (currentMode === mode && mode !== 'computer') { 
+            if (currentMode === mode && mode !== 'computer') {
                 console.log("toggleMode: Same mode requested, returning.");
                 return;
             }
@@ -660,18 +924,33 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             currentMode = mode; // Update global mode immediately
             console.log(`toggleMode: Set currentMode to ${currentMode}`);
 
+            // PVP Sync
+            if (isPVPMode && !fromPeer && conn) {
+                conn.send({ type: 'mode', mode: mode });
+            }
+
+            // PVP Setup Logic
+            if (currentMode === 'pvp') {
+                classicBoard.style.display = 'none';
+                ultimateBoardElement.style.display = 'none';
+                rulesDescriptions.forEach(el => el.classList.remove('active'));
+                pvpSetupScreen.style.display = 'block';
+                modeToggleButtons.style.display = 'none';
+                return;
+            }
+
             // Update UI button styles - Ensure computer button is highlighted correctly
             document.querySelectorAll('.mode-toggle button').forEach(btn => {
-                let isActive = (btn.id === (currentMode + 'Mode')) || (currentMode === 'computer' && btn.id === 'computerMode');
-                 // Handle special case button IDs if they don't follow the pattern
-                 if (!document.getElementById(currentMode + 'Mode') && currentMode === 'computer') {
-                      isActive = (btn.id === 'computerMode');
-                  } // Add similar checks for tournament/about if needed
+                let isActive = (btn.id === (currentMode + 'Mode')) || (currentMode === 'computer' && btn.id === 'computerMode') || (currentMode === 'pvp' && btn.id === 'pvpMode');
+                // Handle special case button IDs if they don't follow the pattern
+                if (!document.getElementById(currentMode + 'Mode') && currentMode === 'computer') {
+                    isActive = (btn.id === 'computerMode');
+                } // Add similar checks for tournament/about if needed
 
-                 btn.style.background = isActive 
-                     ? 'linear-gradient(45deg, var(--primary), var(--secondary))' 
-                     : 'rgba(255, 255, 255, 0.1)';
-             });
+                btn.style.background = isActive
+                    ? 'linear-gradient(45deg, var(--primary), var(--secondary))'
+                    : 'rgba(255, 255, 255, 0.1)';
+            });
 
 
             // Handle specific 'computer' mode selection -> Show Setup Screen
@@ -685,113 +964,113 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
 
             // --- This part should ONLY run if currentMode is NOT 'computer' --- 
             console.log("toggleMode: Condition (currentMode === 'computer') is FALSE. Proceeding to setup for mode:", currentMode);
-             // Switching to a non-computer mode (e.g., classic, memory, etc.)
+            // Switching to a non-computer mode (e.g., classic, memory, etc.)
             isPlayingAgainstAI = false; // Ensure AI is off
 
             resetGame();
-            
+
             // Update UI
-            document.getElementById('classicMode').style.background = mode === 'classic' 
+            document.getElementById('classicMode').style.background = mode === 'classic'
                 ? 'linear-gradient(45deg, var(--primary), var(--secondary))'
                 : 'rgba(255, 255, 255, 0.1)';
-                
+
             document.getElementById('memoryMode').style.background = mode === 'memory'
                 ? 'linear-gradient(45deg, var(--primary), var(--secondary))'
                 : 'rgba(255, 255, 255, 0.1)';
-                
+
             document.getElementById('shuffleMode').style.background = mode === 'shuffle'
                 ? 'linear-gradient(45deg, var(--primary), var(--secondary))'
                 : 'rgba(255, 255, 255, 0.1)';
-                
+
             document.getElementById('ultimateMode').style.background = mode === 'ultimate'
                 ? 'linear-gradient(45deg, var(--primary), var(--secondary))'
                 : 'rgba(255, 255, 255, 0.1)';
-            
+
             document.getElementById('boltMode').style.background = mode === 'bolt' // Style for Bolt Mode
                 ? 'linear-gradient(45deg, var(--primary), var(--secondary))'
                 : 'rgba(255, 255, 255, 0.1)';
-            
+
             // Reset AI mode button style unless it's the selected mode
             document.getElementById('computerMode').style.background = mode === 'computer'
                 ? 'linear-gradient(45deg, var(--primary), var(--secondary))'
                 : 'rgba(255, 255, 255, 0.1)';
-            
+
             // Toggle rules visibility
             // Hide all rules first
             rulesDescriptions.forEach(el => el.classList.remove('active'));
             // Show the correct rule description
             const rulesId = mode + 'Rules';
             const rulesElement = document.getElementById(rulesId);
-            if (rulesElement) { 
-                 rulesElement.classList.add('active'); 
-            } else if (mode === 'computer') { 
+            if (rulesElement) {
+                rulesElement.classList.add('active');
+            } else if (mode === 'computer') {
                 // If computer mode is selected directly (or via setup), show classic rules
                 document.getElementById('classicRules').classList.add('active');
             }
-            
+
             // Toggle board visibility
             document.getElementById('board').style.display = (mode === 'ultimate') ? 'none' : 'grid'; // Classic board for most modes
             document.getElementById('ultimateBoard').style.display = mode === 'ultimate' ? 'grid' : 'none';
-            
+
             // Add appropriate classes to board
             const board = document.getElementById('board');
             board.classList.toggle('shuffle', mode === 'shuffle');
-            
+
             // Set AI flag - This will be set by startComputerGame now
             // isPlayingAgainstAI = (mode === 'computer'); 
-            
+
             // Handle specific 'computer' mode selection -> Show Setup Screen
             if (mode === 'computer') {
                 // Don't immediately start the game. Show the setup screen.
                 showComputerSetupScreen();
                 return; // Stop further processing in toggleMode for computer
             } else {
-                 // Switching to a non-computer mode (e.g., classic, memory, etc.)
-                 console.log(`Mode is ${mode}, switching from computer setup or another mode.`);
-                 isPlayingAgainstAI = false; // Ensure AI is off
-                 cancelComputerSetup(); // Just hide the setup screen if it was visible
+                // Switching to a non-computer mode (e.g., classic, memory, etc.)
+                console.log(`Mode is ${mode}, switching from computer setup or another mode.`);
+                isPlayingAgainstAI = false; // Ensure AI is off
+                cancelComputerSetup(); // Just hide the setup screen if it was visible
 
-                 // Ensure mode buttons are visible (might have been hidden by setup)
-                 modeToggleButtons.style.display = 'flex';
+                // Ensure mode buttons are visible (might have been hidden by setup)
+                modeToggleButtons.style.display = 'flex';
 
-                 // Show the correct board for the selected non-computer mode
-                 if (currentMode === 'ultimate') {
-                     classicBoard.style.display = 'none';
-                     ultimateBoardElement.style.display = 'grid';
-                 } else {
-                     ultimateBoardElement.style.display = 'none';
-                     classicBoard.style.display = 'grid';
-                 }
+                // Show the correct board for the selected non-computer mode
+                if (currentMode === 'ultimate') {
+                    classicBoard.style.display = 'none';
+                    ultimateBoardElement.style.display = 'grid';
+                } else {
+                    ultimateBoardElement.style.display = 'none';
+                    classicBoard.style.display = 'grid';
+                }
 
-                 // Show appropriate rules
-                 rulesDescriptions.forEach(el => el.classList.remove('active'));
-                 const rulesId = currentMode + 'Rules';
-                 const rulesElement = document.getElementById(rulesId);
-                 if (rulesElement) { rulesElement.classList.add('active'); }
+                // Show appropriate rules
+                rulesDescriptions.forEach(el => el.classList.remove('active'));
+                const rulesId = currentMode + 'Rules';
+                const rulesElement = document.getElementById(rulesId);
+                if (rulesElement) { rulesElement.classList.add('active'); }
 
-                 // Reset game state and show controls
-                 resetGame(); // Reset board state for the new mode. resetGame calls updateStatus.
-                 showGameControls(); // Show New Game/Back buttons
-                 statusDisplay.style.display = 'block'; // Ensure status is visible
-                 roastDisplay.style.display = 'block';  // Ensure roast is visible
+                // Reset game state and show controls
+                resetGame(); // Reset board state for the new mode. resetGame calls updateStatus.
+                showGameControls(); // Show New Game/Back buttons
+                statusDisplay.style.display = 'block'; // Ensure status is visible
+                roastDisplay.style.display = 'block';  // Ensure roast is visible
             }
-            
+
             // If NOT in tournament mode, ensure standard UI elements are visible
             if (!isTournamentMode) {
                 statusDisplay.style.display = 'block';
                 roastDisplay.style.display = 'block';
-                newGameButton.style.display = 'inline-block'; 
+                newGameButton.style.display = 'inline-block';
                 nextRoundButton.style.display = 'none'; // Ensure hidden outside tournament
             }
-            
+
             // For Ultimate mode, make sure the board is initialized
             if (mode === 'ultimate') {
                 initializeUltimateBoard();
             }
-            
+
             document.getElementById('board').style.transform = 'none';
             document.getElementById('roast').classList.remove('roast-visible'); // Hide roast
-            
+
             // Update status display
             updateStatus(); // Moved updateStatus call here to reflect changes immediately
         }
@@ -799,65 +1078,65 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
         function initializeUltimateBoard() {
             const ultimateBoardElement = document.getElementById('ultimateBoard');
             ultimateBoardElement.innerHTML = '';
-            
+
             // Create 9 small boards
             for (let boardIndex = 0; boardIndex < 9; boardIndex++) {
                 const smallBoard = document.createElement('div');
                 smallBoard.className = 'small-board';
                 smallBoard.dataset.boardIndex = boardIndex;
                 smallBoard.style.position = 'relative';
-                
+
                 // Create 9 cells for each small board
                 for (let cellIndex = 0; cellIndex < 9; cellIndex++) {
                     const cell = document.createElement('div');
                     cell.className = 'small-cell';
                     cell.dataset.boardIndex = boardIndex;
                     cell.dataset.cellIndex = cellIndex;
-                    
+
                     cell.addEventListener('click', () => handleUltimateClick(boardIndex, cellIndex));
-                    
+
                     smallBoard.appendChild(cell);
                 }
-                
+
                 ultimateBoardElement.appendChild(smallBoard);
             }
-            
+
             updateUltimateUI();
         }
-        
+
         function updateUltimateUI() {
             // Update all cells based on ultimateBoard array
             document.querySelectorAll('.small-cell').forEach(cell => {
                 const boardIndex = parseInt(cell.dataset.boardIndex);
                 const cellIndex = parseInt(cell.dataset.cellIndex);
                 const value = ultimateBoard[boardIndex][cellIndex];
-                
+
                 cell.textContent = value;
                 cell.className = 'small-cell';
                 if (value === 'X') cell.classList.add('x');
                 if (value === 'O') cell.classList.add('o');
             });
-            
+
             // Update small board states
             document.querySelectorAll('.small-board').forEach(board => {
                 const boardIndex = parseInt(board.dataset.boardIndex);
-                
+
                 // Clear previous classes and remove existing markers first
                 const existingMarker = board.querySelector('.board-win-marker');
                 if (existingMarker) {
                     existingMarker.remove();
                 }
                 board.className = 'small-board'; // Reset classes
-                
+
                 // Add active class if this is the next board to play in
                 if (gameActive && (nextBoardIndex === boardIndex || (nextBoardIndex === -1 && smallBoardWinners[boardIndex] === '' && !isSmallBoardFull(boardIndex)))) {
                     board.classList.add('active');
                 }
-                
+
                 // Add won class if this board has been won
                 if (smallBoardWinners[boardIndex] === 'X') {
                     board.classList.add('won-x');
-                    
+
                     // If there's no win marker yet, add one
                     if (!board.querySelector('.board-win-marker')) {
                         const marker = document.createElement('div');
@@ -867,7 +1146,7 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
                     }
                 } else if (smallBoardWinners[boardIndex] === 'O') {
                     board.classList.add('won-o');
-                    
+
                     // If there's no win marker yet, add one
                     if (!board.querySelector('.board-win-marker')) {
                         const marker = document.createElement('div');
@@ -877,39 +1156,52 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
                     }
                 }
             });
-            
+
             document.querySelectorAll('.small-board').forEach(board => {
                 board.classList.remove('ultimate-win'); // Remove ultimate win highlight
             });
-            
+
             document.getElementById('board').style.transform = 'none';
             document.getElementById('roast').classList.remove('roast-visible'); // Hide roast
         }
-        
-        function handleUltimateClick(boardIndex, cellIndex) {
+
+        function handleUltimateClick(boardIndex, cellIndex, fromPeer = false) {
             console.log(`handleUltimateClick called: board=${boardIndex}, cell=${cellIndex}. Current player: ${currentPlayer}. AI Mode: ${isPlayingAgainstAI}`); // Log entry
             if (!gameActive) return;
-            
+
+            // PVP Check
+            if (isPVPMode && !fromPeer) {
+                if (currentPlayer !== myPlayerSide) {
+                    showRoast("Wait for your turn!");
+                    return;
+                }
+            }
+
             // Check if this is a valid move
             // Either nextBoardIndex is -1 (any board) or matches the current boardIndex
             // And the board must not be already won
             // And the cell must be empty
-            if ((nextBoardIndex === -1 || nextBoardIndex === boardIndex) && 
-                smallBoardWinners[boardIndex] === '' && 
+            if ((nextBoardIndex === -1 || nextBoardIndex === boardIndex) &&
+                smallBoardWinners[boardIndex] === '' &&
                 ultimateBoard[boardIndex][cellIndex] === '') {
-                
+
+                // PVP: Send move
+                if (isPVPMode && !fromPeer && conn) {
+                    conn.send({ type: 'move', boardIndex: boardIndex, cellIndex: cellIndex, player: currentPlayer });
+                }
+
                 // Make the move
                 ultimateBoard[boardIndex][cellIndex] = currentPlayer;
                 const cellElement = document.querySelector(`.small-cell[data-board-index="${boardIndex}"][data-cell-index="${cellIndex}"]`);
                 cellElement.classList.add('popping'); // Add pop animation
                 cellElement.addEventListener('animationend', () => cellElement.classList.remove('popping'), { once: true }); // Remove class after animation
-                
+
                 let justWonSmallBoard = false;
                 // Check if this move wins the small board
                 if (smallBoardWinners[boardIndex] === '' && checkSmallBoardWin(boardIndex)) {
                     smallBoardWinners[boardIndex] = currentPlayer;
                     justWonSmallBoard = true; // Mark that this move won the small board
-                    
+
                     // Check if this wins the entire game
                     const winningPattern = checkUltimateWin();
                     if (winningPattern) {
@@ -925,7 +1217,7 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
                         return; // Game Over
                     }
                 }
-                
+
                 // Check for a draw (only if the game isn't already won)
                 if (checkUltimateDraw()) {
                     gameActive = false;
@@ -935,23 +1227,23 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
                     } else {
                         document.getElementById('status').textContent = "It's a Draw!";
                     }
-                     updateUltimateUI(); // Update UI one last time for draw
+                    updateUltimateUI(); // Update UI one last time for draw
                     return;
                 }
-                
+
                 // Set the next board based on the cell played
                 nextBoardIndex = cellIndex;
-                
+
                 // If the next board is already won or full, player can choose any board
                 if (smallBoardWinners[nextBoardIndex] !== '' || isSmallBoardFull(nextBoardIndex)) {
                     nextBoardIndex = -1;
                 }
-                
+
                 // Switch players
                 currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
                 updateStatus();
                 console.log(`handleUltimateClick: Player switched to ${currentPlayer}. Next board target: ${nextBoardIndex}`); // Log player switch
-                
+
                 // Update the UI
                 updateUltimateUI();
                 // Trigger AI move if applicable AFTER UI update and player switch
@@ -982,11 +1274,19 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             board.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${randomRotate}deg)`;
         }
 
-        function handleClick(index) {
+        function handleClick(index, fromPeer = false) {
             // Prevent processing if already handling a click
             if (isProcessingClick) {
                 console.log("Rapid click detected, ignoring.");
                 return;
+            }
+
+            // PVP Check: If it's PVP mode, not from peer, and not my turn -> Block
+            if (isPVPMode && !fromPeer) {
+                if (currentPlayer !== myPlayerSide) {
+                    showRoast("Wait for your turn!");
+                    return;
+                }
             }
 
             // Lock the function
@@ -998,19 +1298,35 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
                 if (!gameActive || gameBoard[index] !== '') { // Check if game active AND cell is empty
                     // Handle invalid move (roast, switch turn for memory/shuffle, etc.)
                     if (gameBoard[index] !== '' && (currentMode === 'memory' || currentMode === 'shuffle')) {
+                        // In PVP, invalid moves should not switch turns locally for the clicker if it's just a roast
+                        // But for Memory/Shuffle, a wrong click normally switches turns.
+                        // For PVP simplicity, let's keep it syncing BUT we need to tell the other peer IF the turn switches.
+                        // However, syncing invalid moves is complex. Let's block turn switching for invalid moves in PVP Memory/Shuffle for now or handle it carefully.
+                        // Decision: Allow local roast but maybe don't switch turn in PVP to avoid desync if packet lost? 
+                        // Better: If it causes turn switch, we MUST sync it. PeerJS logic handles 'move' which implies successful placement.
+                        // We might need a special 'turnSwitch' event if no move is made. 
+                        // For now: Stick to standard. If not from peer, we execute logic. If turn switches, how does peer know?
+                        // Peer receives 'move' data only on successful placement in standard logic.
+                        // If we switch turn here without placement, we need to send a 'skip' or 'foul' event.
+
                         showRoast(roasts[Math.floor(Math.random() * roasts.length)]);
-                        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-                        updateStatus();
-                        if (currentMode === 'shuffle') shuffleBoard();
-                        console.log("handleClick (Memory/Shuffle - invalid move): Player lost turn, triggering AI move.");
-                        // No 'return' here needed as the finally block will execute.
-                        // Trigger AI move *after* releasing the lock in finally.
+
+                        if (!isPVPMode) { // PVP: Don't switch turn on foul for simplicity to avoid desync
+                            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                            updateStatus();
+                            if (currentMode === 'shuffle') shuffleBoard();
+                        } else {
+                            // In PVP, maybe just roast and keep turn?
+                            // Yes, keeps it simple. No turn switch on memory/shuffle errors in PVP.
+                        }
+
+                        console.log("handleClick (Memory/Shuffle - invalid move): Player lost turn (or just roasted).");
                     } else if (gameBoard[index] !== '' && currentMode === 'bolt') {
                         // Log the specific invalid move case for Bolt
                         console.log(`handleClick Bolt: Invalid move on occupied cell ${index}. Cell contains: ${gameBoard[index]}. Showing roast.`);
                         showRoast("Oops! That spot is taken.");
                     } else if (!gameActive) {
-                         console.log(`handleClick: Invalid move on cell ${index}. Game not active.`);
+                        console.log(`handleClick: Invalid move on cell ${index}. Game not active.`);
                     } else {
                         // Catch-all for other invalid clicks (e.g., classic mode on occupied cell)
                         console.log(`handleClick: Invalid move on occupied cell ${index} in ${currentMode} mode. Cell contains: ${gameBoard[index]}.`);
@@ -1026,10 +1342,16 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
                         console.log(`handleClick: Cell ${index} occupied in ${currentMode} mode. Returning before placing mark.`);
                         return;
                     }
-                    // If we reach here, it must be a memory/shuffle invalid click where the player was switched, so we proceed to the finally block to potentially trigger AI.
+                    // If we reach here, it must be a memory/shuffle invalid click where the player was switched (or not in PVP), so we proceed.
                     console.log(`handleClick: Invalid move logic complete for memory/shuffle on cell ${index}. Proceeding to finally.`);
 
                 } else { // --- Valid Move --- Only execute if cell was empty and game active
+
+                    // PVP: Send move to peer if valid and local
+                    if (isPVPMode && !fromPeer && conn) {
+                        conn.send({ type: 'move', index: index, player: currentPlayer });
+                    }
+
                     const cell = document.querySelector(`[data-index="${index}"]`);
 
                     // Bolt Mode: Check for oldest mark removal BEFORE placing the new one
@@ -1155,7 +1477,7 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
                 } else if (gameBoard[index] === 'O') {
                     cell.classList.add('o');
                 }
-                
+
                 // Add winning cell highlight if applicable
                 if (winningPattern && winningPattern.includes(index)) {
                     cell.classList.add('winning-cell');
@@ -1173,6 +1495,12 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             if (isTournamentMode) {
                 const currentPlayerName = currentPlayer === 'X' ? tournamentPlayers[0].name : tournamentPlayers[1].name;
                 statusText = `Current Player: ${currentPlayerName} (<span style="color: ${playerColor}">${currentPlayer}</span>)`;
+            } else if (isPVPMode) {
+                // PVP Status
+                const myRole = (myPlayerSide === 'X') ? 'Host' : 'Guest';
+                const opponentRole = (myPlayerSide === 'X') ? 'Guest' : 'Host';
+                const turnText = (currentPlayer === myPlayerSide) ? "Your Turn" : "Opponent's Turn";
+                statusText = `${turnText} (${currentPlayer}) - You are ${myPlayerSide} (${myRole})`;
             } else if (isPlayingAgainstAI) {
                 const difficultyDisplay = aiDifficulty.charAt(0).toUpperCase() + aiDifficulty.slice(1);
                 const modeDisplay = currentMode.charAt(0).toUpperCase() + currentMode.slice(1);
@@ -1184,7 +1512,7 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             } else {
                 statusText = `Current Player: <span style="color: ${playerColor}">${currentPlayer}</span>`;
             }
-            
+
             // Append Ultimate mode specific info if applicable
             if (currentMode === 'ultimate' && gameActive) {
                 if (nextBoardIndex === -1) {
@@ -1193,16 +1521,21 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
                     statusText += ` - Play in board ${nextBoardIndex + 1}`;
                 }
             }
-            
+
             statusDisplay.innerHTML = statusText;
         }
 
-        function resetGame() {
+        function resetGame(fromPeer = false) {
             console.log(`Executing resetGame... isPlayingAgainstAI: ${isPlayingAgainstAI}, isTournamentMode: ${isTournamentMode}`); // Log entry with state
+
+            if (isPVPMode && !fromPeer && conn) {
+                conn.send({ type: 'reset' });
+            }
+
             gameBoard.fill('');
             gameActive = true;
             currentPlayer = 'X';
-            
+
             // Reset Ultimate Tic Tac Toe state
             ultimateBoard = Array(9).fill().map(() => Array(9).fill(''));
             smallBoardWinners = Array(9).fill('');
@@ -1211,36 +1544,36 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             // Clear all pending cell timeouts on reset
             clearAllCellTimeouts();
             console.log("resetGame finished."); // Log exit
- 
+
             // Reset Bolt mode move tracking
             playerXMoves = [];
             playerOMoves = [];
             // Add log to confirm reset
             console.log(`resetGame: Cleared Bolt moves. X: ${JSON.stringify(playerXMoves)}, O: ${JSON.stringify(playerOMoves)}`);
-            
+
             // Reset UI
             document.querySelectorAll('.cell').forEach(cell => {
                 cell.textContent = '';
                 cell.className = 'cell'; // Remove any added classes
             });
-            
+
             // Update Ultimate board if that's the current mode
             if (currentMode === 'ultimate') {
                 // Ensure ultimate board is reset and displayed correctly
-                initializeUltimateBoard(); 
+                initializeUltimateBoard();
             }
-            
+
             // Update status, but only if not in tournament mode OR if called explicitly
             // During tournament round start, status is updated separately
-            if (!isTournamentMode) { 
-                 updateStatus();
+            if (!isTournamentMode) {
+                updateStatus();
             } else if (isPlayingAgainstAI) {
                 // If starting an AI game (maybe from a tournament mode later?)
                 updateStatus();
             } else {
                 // In tournament mode, resetGame is called by toggleMode when starting a round.
                 // We need to ensure the status display reflects the current tournament player.
-                updateStatus(); 
+                updateStatus();
             }
 
             // Update status and buttons based on game state (AI, tournament, or normal)
@@ -1250,14 +1583,14 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             if (isPlayingAgainstAI) {
                 newGameButton.textContent = 'Change AI Settings';
                 newGameButton.onclick = showComputerSetupScreen; // Go back to setup
-                backToModesButton.style.display = 'inline-block'; 
+                backToModesButton.style.display = 'inline-block';
                 console.log("resetGame (AI branch): Set back button display to inline-block");
             } else if (isTournamentMode) {
-                 // In tournament, button text/action is set elsewhere (initializeTournament, startTournamentRound)
-                 newGameButton.textContent = 'Abandon Tournament'; // Make sure this is set if reset is called mid-tournament
-                 newGameButton.onclick = confirmAbandonTournament;
-                 backToModesButton.style.display = 'none'; // Explicitly hide in tournament
-                 console.log("resetGame (Tournament branch): Hid back button");
+                // In tournament, button text/action is set elsewhere (initializeTournament, startTournamentRound)
+                newGameButton.textContent = 'Abandon Tournament'; // Make sure this is set if reset is called mid-tournament
+                newGameButton.onclick = confirmAbandonTournament;
+                backToModesButton.style.display = 'none'; // Explicitly hide in tournament
+                console.log("resetGame (Tournament branch): Hid back button");
             } else {
                 // Standard non-AI, non-tournament game
                 newGameButton.textContent = 'New Game';
@@ -1274,10 +1607,10 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             winningPattern.forEach(boardIndex => {
                 const boardElement = document.querySelector(`.small-board[data-board-index="${boardIndex}"]`);
                 // Remove previous state classes before adding the ultimate win class
-                boardElement.classList.remove('won-x', 'won-o', 'active'); 
+                boardElement.classList.remove('won-x', 'won-o', 'active');
                 if (boardElement) {
-                     boardElement.classList.add('ultimate-win');
-                 }
+                    boardElement.classList.add('ultimate-win');
+                }
             });
         }
 
@@ -1291,27 +1624,27 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
         function triggerAIMove() {
             console.log(`triggerAIMove called. Conditions: isAI=${isPlayingAgainstAI}, player=${currentPlayer}, active=${gameActive}, mode=${currentMode}`);
             if (isPlayingAgainstAI && currentPlayer === 'O' && gameActive) {
-                
+
                 // Select correct board based on mode
                 const targetBoard = currentMode === 'ultimate' ? ultimateBoardElement : classicBoard;
                 targetBoard.style.pointerEvents = 'none'; // Disable player clicks
 
                 console.log(`AI Turn triggered (Mode: ${currentMode}, Difficulty: ${aiDifficulty}). Setting timeout.`);
-                
+
                 setTimeout(() => {
                     console.log('AI Timeout: Calculating move...');
                     let aiMove = null;
-                    
+
                     if (currentMode === 'ultimate') {
                         console.log(`AI Timeout: Current player ${currentPlayer}, nextBoardIndex: ${nextBoardIndex}`); // Log state before move calc
                         aiMove = makeUltimateAIMove(aiDifficulty);
-                         console.log(`AI Timeout: makeUltimateAIMove returned: ${JSON.stringify(aiMove)}`); // Log the returned object
-                         if (aiMove && typeof aiMove.boardIndex !== 'undefined' && typeof aiMove.cellIndex !== 'undefined') {
+                        console.log(`AI Timeout: makeUltimateAIMove returned: ${JSON.stringify(aiMove)}`); // Log the returned object
+                        if (aiMove && typeof aiMove.boardIndex !== 'undefined' && typeof aiMove.cellIndex !== 'undefined') {
                             console.log(`AI Timeout: Valid move object received. Calling handleUltimateClick(${aiMove.boardIndex}, ${aiMove.cellIndex})`);
                             handleUltimateClick(aiMove.boardIndex, aiMove.cellIndex); // AI makes its ultimate move
-                    } else {
+                        } else {
                             console.log('AI Timeout: Ultimate AI move index is null, cannot play.');
-                         }
+                        }
                     } else {
                         // Classic, Memory, Shuffle modes
                         aiMove = makeAIMove(aiDifficulty);
@@ -1323,7 +1656,7 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
                             console.log('AI Timeout: Classic AI move index is null, cannot play.');
                         }
                     }
-                    
+
                     targetBoard.style.pointerEvents = 'auto'; // Re-enable player clicks
                 }, 600); // 600ms delay
             } else {
@@ -1342,17 +1675,17 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
 
             // Difficulty: Easy -> ~50% chance of random move, otherwise proceed to Hard logic
             if (difficulty === 'easy' && Math.random() < 0.5) {
-                 console.log("AI Easy: Making random move");
-                 return availableMoves[Math.floor(Math.random() * availableMoves.length)];
+                console.log("AI Easy: Making random move");
+                return availableMoves[Math.floor(Math.random() * availableMoves.length)];
             }
-            
+
             // Difficulty: Brutal (Placeholder - for now, same as Hard)
             // TODO: Implement Minimax for Brutal difficulty
             if (difficulty === 'brutal') {
                 console.log("AI Brutal: Using Hard logic (Minimax TODO)");
                 // Fallthrough to Hard logic for now
             }
-            
+
             // --- Hard Logic (and fallback for Easy/Brutal) ---
             console.log("AI Hard: Evaluating strategic moves...");
 
@@ -1372,7 +1705,7 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
                     [0, 3, 6], [1, 4, 7], [2, 5, 8],
                     [0, 4, 8], [2, 4, 6]
                 ];
-                return winPatterns.some(pattern => 
+                return winPatterns.some(pattern =>
                     pattern.every(idx => currentBoard[idx] === player)
                 );
             };
@@ -1419,7 +1752,7 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             }
 
             // Should not happen in Tic Tac Toe if logic is correct, but fallback
-             return availableMoves.length > 0 ? availableMoves[Math.floor(Math.random() * availableMoves.length)] : null;
+            return availableMoves.length > 0 ? availableMoves[Math.floor(Math.random() * availableMoves.length)] : null;
         }
 
         function makeUltimateAIMove(difficulty) {
@@ -1443,16 +1776,16 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
                 validBoardIndices.push(nextBoardIndex);
             } else {
                 // Sent to a finished board, can play anywhere else that's valid
-                 for (let i = 0; i < 9; i++) {
+                for (let i = 0; i < 9; i++) {
                     if (smallBoardWinners[i] === '' && !isSmallBoardFull(i)) {
                         validBoardIndices.push(i);
                     }
                 }
             }
-            
+
             if (validBoardIndices.length === 0) {
-                 console.log("Ultimate AI: No valid boards to play in! Returning null.");
-                 return null; // No moves possible
+                console.log("Ultimate AI: No valid boards to play in! Returning null.");
+                return null; // No moves possible
             }
             console.log("Ultimate AI: Valid boards to play in:", validBoardIndices);
 
@@ -1466,22 +1799,22 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             });
 
             if (possibleMoves.length === 0) {
-                 console.log("Ultimate AI: No empty cells in valid boards! Returning null.");
-                 return null; // Should not happen if validBoardIndices has boards
+                console.log("Ultimate AI: No empty cells in valid boards! Returning null.");
+                return null; // Should not happen if validBoardIndices has boards
             }
             console.log(`Ultimate AI: Found ${possibleMoves.length} possible moves:`, JSON.stringify(possibleMoves));
 
             // --- Difficulty Logic --- 
-             // TODO: Implement Hard/Brutal strategies for Ultimate
+            // TODO: Implement Hard/Brutal strategies for Ultimate
 
-             // Easy: Choose a random valid move
+            // Easy: Choose a random valid move
             if (difficulty === 'easy') {
                 console.log(`Ultimate AI Easy: Choosing random move from ${possibleMoves.length} options.`);
                 const chosenMove = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
                 console.log("Ultimate AI Easy: Chosen move:", JSON.stringify(chosenMove));
                 return chosenMove;
             }
-            
+
             // Hard / Brutal (Placeholder: Use Easy logic for now)
             if (difficulty === 'hard' || difficulty === 'brutal') {
                 console.log(`Ultimate AI ${difficulty}: Using Easy logic (Strategy TODO).`);
@@ -1489,16 +1822,16 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
                 console.log(`Ultimate AI ${difficulty}: Chosen move:`, JSON.stringify(chosenMove));
                 return chosenMove;
             }
-            
+
             // Fallback (shouldn't be reached)
             return possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
         }
 
         // Set up the game
-        document.querySelectorAll('.cell').forEach(cell => 
+        document.querySelectorAll('.cell').forEach(cell =>
             cell.addEventListener('click', () => handleClick(parseInt(cell.dataset.index)))
         );
-        
+
         // === Tournament Mode Functions ===
 
         function startTournamentSetup() {
@@ -1541,11 +1874,11 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             newGameButton.textContent = 'Abandon Tournament'; // Change button text
             newGameButton.onclick = confirmAbandonTournament;
             // Ensure the main status/roast displays are hidden initially in tournament
-            statusDisplay.style.display = 'none'; 
+            statusDisplay.style.display = 'none';
             roastDisplay.style.display = 'none';
             nextTournamentRound(); // Start the first round
         }
-        
+
         function hideAllScreens() {
             // Hide game boards, rules, setup, results, etc.
             classicBoard.style.display = 'none';
@@ -1558,7 +1891,7 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             statusDisplay.style.display = 'none'; // Hide regular status during setup/results
             roastDisplay.style.display = 'none';
         }
-        
+
         function confirmAbandonTournament() {
             if (confirm('Are you sure you want to abandon the current tournament?')) {
                 exitTournament();
@@ -1569,18 +1902,18 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             isTournamentMode = false;
             currentTournamentRound = 0;
             tournamentPlayers = [{ name: 'Player 1', score: 0 }, { name: 'Player 2', score: 0 }];
-            
+
             hideAllScreens();
             modeToggleButtons.style.display = 'flex'; // Show mode buttons again
             newGameButton.textContent = 'New Game'; // Reset button text
             newGameButton.onclick = resetGame; // Reset button action
             statusDisplay.style.display = 'block'; // Show status
             roastDisplay.style.display = 'block'; // Show roast area
-            
+
             // Reset special button styles
             tournamentModeButton.style.background = 'rgba(255, 255, 255, 0.1)';
             aboutGameButton.style.background = 'rgba(255, 255, 255, 0.1)';
-            
+
             // Ensure the correct default mode view is shown
             const defaultMode = 'classic';
             document.getElementById(defaultMode + 'Rules').classList.add('active');
@@ -1597,15 +1930,15 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
                 showTournamentResults();
             }
         }
-        
+
         function startTournamentRound() {
             const roundInfo = tournamentRounds[currentTournamentRound - 1];
             // Update progress display
-            document.getElementById('tournamentRoundTitle').textContent = 
+            document.getElementById('tournamentRoundTitle').textContent =
                 `Round ${currentTournamentRound}: ${roundInfo.name} (${roundInfo.points} ${roundInfo.points === 1 ? 'point' : 'points'})`;
-            document.getElementById('tournamentPlayer1Info').textContent = 
+            document.getElementById('tournamentPlayer1Info').textContent =
                 `${tournamentPlayers[0].name} (X): ${tournamentPlayers[0].score}`;
-            document.getElementById('tournamentPlayer2Info').textContent = 
+            document.getElementById('tournamentPlayer2Info').textContent =
                 `${tournamentPlayers[1].name} (O): ${tournamentPlayers[1].score}`;
             tournamentProgressDisplay.style.display = 'block'; // Ensure progress is visible
             nextRoundButton.style.display = 'none'; // Hide button until round ends
@@ -1613,7 +1946,7 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             roastDisplay.style.display = 'block'; // Show roast area
             // Set the game mode for the current round
             // This will also call resetGame internally to prepare the board
-            toggleMode(roundInfo.mode); 
+            toggleMode(roundInfo.mode);
             // Ensure the correct board is visible after toggleMode (handles early return case)
             if (roundInfo.mode === 'ultimate') {
                 classicBoard.style.display = 'none';
@@ -1635,11 +1968,11 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
                 setTimeout(triggerAIMove, 600);
             }
         }
-        
+
         function handleTournamentGameEnd(winner) {
             // Placeholder - will implement scoring and next steps here
             console.log(`Tournament Round ${currentTournamentRound} ended. Winner: ${winner}`);
-            
+
             const roundInfo = tournamentRounds[currentTournamentRound - 1];
             let pointsAwarded = roundInfo.points;
             let winnerName = "";
@@ -1652,9 +1985,9 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             }
 
             // Update score display immediately
-            document.getElementById('tournamentPlayer1Info').textContent = 
+            document.getElementById('tournamentPlayer1Info').textContent =
                 `${tournamentPlayers[0].name} (X): ${tournamentPlayers[0].score}`;
-            document.getElementById('tournamentPlayer2Info').textContent = 
+            document.getElementById('tournamentPlayer2Info').textContent =
                 `${tournamentPlayers[1].name} (O): ${tournamentPlayers[1].score}`;
 
             // Show result message in the status area
@@ -1663,7 +1996,7 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             } else {
                 statusDisplay.textContent = `${winnerName} wins Round ${currentTournamentRound} (+${pointsAwarded} points)!`;
             }
-            
+
             gameActive = false; // Ensure game stops
             nextRoundButton.style.display = 'none'; // Hide button for seamless auto-progression
 
@@ -1676,7 +2009,7 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
                 }
             }, 1800); // 1.8 seconds for user to see result
         }
-        
+
         function showTournamentResults() {
             // Placeholder - will implement the final results screen
             console.log("Tournament finished. Showing results.");
@@ -1701,26 +2034,26 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
 
             tournamentResultsScreen.style.display = 'block';
         }
-        
+
         function rematchTournament() {
             // Simply re-initialize with the same players
             currentTournamentRound = 0;
             tournamentPlayers[0].score = 0;
             tournamentPlayers[1].score = 0;
-            
+
             hideAllScreens();
             tournamentResultsScreen.style.display = 'none';
             tournamentProgressDisplay.style.display = 'block';
             newGameButton.textContent = 'Abandon Tournament'; // Ensure button is correct
             newGameButton.onclick = confirmAbandonTournament;
-            
+
             nextTournamentRound(); // Start round 1 again
         }
 
         // === About Screen Functions ===
         function showAboutScreen() {
             exitTournament(); // Use exitTournament to reset to a clean state first
-            hideAllScreens(); 
+            hideAllScreens();
             aboutGameScreen.style.display = 'block';
             modeToggleButtons.style.display = 'none'; // Hide mode buttons
             // Style the active button
@@ -1730,7 +2063,7 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
 
         function hideAboutScreen() {
             aboutGameScreen.style.display = 'none';
-             // Reset special button styles (will be handled by exitTournament call below)
+            // Reset special button styles (will be handled by exitTournament call below)
             exitTournament(); // Use exitTournament to restore the default main menu view
         }
         // ==============================
@@ -1748,11 +2081,11 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             // Style the active button
             document.getElementById('computerMode').style.background = 'linear-gradient(45deg, var(--primary), var(--secondary))';
             // Reset other special buttons
-            tournamentModeButton.style.background = 'rgba(255, 255, 255, 0.1)'; 
+            tournamentModeButton.style.background = 'rgba(255, 255, 255, 0.1)';
             aboutGameButton.style.background = 'rgba(255, 255, 255, 0.1)';
             // Reset difficulty selection UI to default (hard)
-            setAIDifficulty('hard'); 
-             // Reset mode dropdown to classic
+            setAIDifficulty('hard');
+            // Reset mode dropdown to classic
             document.getElementById('computerGameMode').value = 'classic';
             console.log("showComputerSetupScreen finished."); // Log exit
         }
@@ -1767,15 +2100,15 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             // if the user cancels setup *without* choosing another mode (e.g. clicking cancel button)
             // Check if we are NOT currently in a game (AI or tournament)
             if (!isPlayingAgainstAI && !isTournamentMode) {
-                 modeToggleButtons.style.display = 'flex'; // Show mode buttons
-                 newGameButton.style.display = 'inline-block'; // Show new game button
-                 backToModesButton.style.display = 'none'; // Hide back button
-                 // Reset new game button
-                 newGameButton.textContent = 'New Game';
-                 newGameButton.onclick = resetGame;
-                 // Ensure default rules/view?
-                 document.getElementById('classicRules').classList.add('active'); 
-             }
+                modeToggleButtons.style.display = 'flex'; // Show mode buttons
+                newGameButton.style.display = 'inline-block'; // Show new game button
+                backToModesButton.style.display = 'none'; // Hide back button
+                // Reset new game button
+                newGameButton.textContent = 'New Game';
+                newGameButton.onclick = resetGame;
+                // Ensure default rules/view?
+                document.getElementById('classicRules').classList.add('active');
+            }
         }
 
         function setAIDifficulty(difficulty) {
@@ -1793,11 +2126,11 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
         function startComputerGame() {
             const selectedMode = document.getElementById('computerGameMode').value;
             // Difficulty is already set in aiDifficulty via setAIDifficulty
-            
+
             isPlayingAgainstAI = true;
             currentMode = selectedMode;
             console.log(`startComputerGame: Set isPlayingAgainstAI=${isPlayingAgainstAI}, currentMode=${currentMode}`); // Log state
-            
+
             hideAllScreens();
             computerSetupScreen.style.display = 'none';
             modeToggleButtons.style.display = 'none'; // Keep mode buttons hidden
@@ -1809,12 +2142,12 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             rulesDescriptions.forEach(el => el.classList.remove('active'));
             const rulesId = currentMode + 'Rules';
             const rulesElement = document.getElementById(rulesId);
-            if (rulesElement) { 
-                rulesElement.classList.add('active'); 
+            if (rulesElement) {
+                rulesElement.classList.add('active');
             } else { // Should not happen if modes match rules divs
                 document.getElementById('classicRules').classList.add('active');
             }
-            
+
             // Show the correct board
             if (currentMode === 'ultimate') {
                 classicBoard.style.display = 'none';
@@ -1823,13 +2156,13 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
                 classicBoard.style.display = 'grid';
                 ultimateBoardElement.style.display = 'none';
             }
-            
+
             console.log("startComputerGame: About to call resetGame()...");
             resetGame(); // Initialize board, status, button text/action
             console.log("startComputerGame: Returned from resetGame(). About to call showGameControls()...");
             showGameControls(); // Show correct buttons for AI game
             console.log("startComputerGame: Returned from showGameControls().");
-            
+
             // Computer ('O') might need to make the first move if currentPlayer starts as 'O'
             // Currently, resetGame sets currentPlayer to 'X', so human always starts.
             // If we wanted AI to start sometimes, logic would go here.
@@ -1859,7 +2192,7 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
             // Optionally show default rules (e.g., classic)
             document.getElementById('classicRules').classList.add('active');
             // Ensure no game board is visible initially
-            classicBoard.style.display = 'none'; 
+            classicBoard.style.display = 'none';
             ultimateBoardElement.style.display = 'none';
             console.log("showModeSelectionScreen finished."); // Log exit
         }
@@ -1905,4 +2238,5 @@ A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. W
         }
     </script>
 </body>
+
 </html>
