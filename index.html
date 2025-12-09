@@ -438,6 +438,14 @@
         <p style="margin-bottom: 20px;">Play with a friend on a different device!</p>
 
         <div id="pvpInitialOptions">
+            <select id="pvpModeSelect" style="padding: 10px; margin: 10px 0; border-radius: 5px; border: none;">
+                <option value="classic">Classic Mode</option>
+                <option value="memory">Memory Mode</option>
+                <option value="shuffle">Shuffled Mode</option>
+                <option value="bolt">Bolt Mode</option>
+                <option value="ultimate">Ultimate Mode</option>
+            </select>
+            <br>
             <button onclick="createPVPGame()" style="width: 80%; margin: 10px 0;">Create Game (Host)</button>
             <div style="margin: 10px 0; font-weight: bold;">- OR -</div>
             <button onclick="showJoinInput()"
@@ -716,6 +724,7 @@
         const firebaseConfig = {
             apiKey: "AIzaSyDGr7NHo1cyOckpu01EyMpYCZq6hxQIae4",
             authDomain: "tictactoe-a5175.firebaseapp.com",
+            databaseURL: "https://tictactoe-a5175-default-rtdb.firebaseio.com/",
             projectId: "tictactoe-a5175",
             storageBucket: "tictactoe-a5175.firebasestorage.app",
             messagingSenderId: "699303131940",
