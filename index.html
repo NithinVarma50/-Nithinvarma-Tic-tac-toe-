@@ -27,23 +27,15 @@
         }
 
         .title {
-            font-size: 2.5em;
-            /* Optimized: Slightly smaller for mobile safety */
+            font-size: 2.8em;
             margin: 10px 0;
             background: linear-gradient(45deg, var(--secondary), var(--accent));
             -webkit-background-clip: text;
             background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 600;
             letter-spacing: 1px;
-            text-align: center;
-        }
-
-        /* Mobile Optimization for Title */
-        @media (max-width: 400px) {
-            .title {
-                font-size: 1.8em;
-            }
         }
 
         .rules {
@@ -65,8 +57,6 @@
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            max-width: 100%;
-            /* Prevent overflow */
         }
 
         .cell {
@@ -82,15 +72,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
-        }
-
-        /* Mobile Optimization for Board */
-        @media (max-width: 400px) {
-            .cell {
-                width: 80px;
-                height: 80px;
-                font-size: 2.2em;
-            }
+            /* Needed for potential future animations */
         }
 
         .cell.popping {
@@ -127,14 +109,6 @@
             padding: 25px;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            max-width: 100%;
-        }
-
-        @media (max-width: 500px) {
-            .ultimate-board {
-                gap: 5px;
-                padding: 10px;
-            }
         }
 
         .small-board {
@@ -173,25 +147,14 @@
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
-        }
-
-        @media (max-width: 400px) {
-            .small-cell {
-                width: 25px;
-                height: 25px;
-                font-size: 1em;
-            }
-
-            .small-board {
-                gap: 2px;
-                padding: 5px;
-            }
+            /* Needed for potential future animations */
         }
 
         .small-cell.popping {
             animation: cellPop 0.3s ease-out;
         }
 
+        /* Winning pulse for small cells (used if we highlight individual cells in ultimate) */
         .small-cell.winning-cell {
             animation: winPulse 1.2s infinite ease-in-out;
         }
@@ -231,7 +194,6 @@
             background: rgba(255, 255, 255, 0.1);
             padding: 10px 25px;
             border-radius: 8px;
-            text-align: center;
         }
 
         #roast {
@@ -243,16 +205,18 @@
             opacity: 0.9;
             transition: opacity 0.3s ease, transform 0.3s ease;
             transform: translateY(10px);
+            /* Start slightly lower */
             opacity: 0;
+            /* Start hidden */
         }
 
         #roast.roast-visible {
             opacity: 0.9;
             transform: translateY(0);
+            /* Slide up to original position */
             animation: roastAppear 0.3s ease-out;
         }
 
-        /* Reverted Button Styles */
         button {
             padding: 12px 30px;
             background: linear-gradient(45deg, var(--primary), var(--secondary));
@@ -265,6 +229,7 @@
             font-weight: 500;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            /* Added default shadow */
         }
 
         button:hover {
@@ -274,7 +239,9 @@
 
         button:active {
             transform: translateY(1px) scale(0.98);
+            /* Click feedback */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            /* Slightly reduced shadow */
         }
 
         .mode-toggle {
@@ -284,13 +251,6 @@
             flex-wrap: wrap;
             justify-content: center;
             opacity: 1;
-        }
-
-        .mode-toggle button {
-            margin: 5px;
-            /* Tighter spacing for mobile */
-            flex: 1 1 auto;
-            /* Allow buttons to shrink/grow */
         }
 
         .mode-description {
@@ -333,6 +293,7 @@
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
             animation: winPulse 1.2s infinite ease-in-out;
             --win-pulse-color: rgba(255, 215, 0, 0.7);
+            /* Gold color for pulse */
         }
 
         @keyframes cellPop {
@@ -398,21 +359,6 @@
             border-color: var(--secondary);
             box-shadow: 0 0 10px rgba(0, 159, 253, 0.4);
         }
-
-        /* Spin Animation for loader */
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .loader {
-            animation: spin 1s linear infinite;
-        }
     </style>
 </head>
 
@@ -425,60 +371,9 @@
         <button onclick="toggleMode('shuffle')" id="shuffleMode">Shuffled Mode</button>
         <button onclick="toggleMode('ultimate')" id="ultimateMode">Ultimate Mode</button>
         <button onclick="toggleMode('bolt')" id="boltMode">Bolt Mode</button>
-        <button onclick="toggleMode('pvp')" id="pvpMode">PVP Online</button>
         <button onclick="toggleMode('computer')" id="computerMode">Play vs Computer</button>
         <button onclick="startTournamentSetup()" id="tournamentModeBtn">Tournament Mode</button>
         <button onclick="showAboutScreen()" id="aboutGameBtn">About Game</button>
-    </div>
-
-    <!-- PVP Setup Screen -->
-    <div id="pvpSetupScreen"
-        style="display: none; background: rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 12px; margin: 15px 0; width: 90%; max-width: 500px; text-align: center; box-shadow: 0 8px 32px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
-        <h2 style="margin-top: 0; color: var(--secondary);">PVP Online Mode</h2>
-        <p style="margin-bottom: 20px;">Play with a friend on a different device!</p>
-
-        <div id="pvpInitialOptions">
-            <select id="pvpModeSelect" style="padding: 10px; margin: 10px 0; border-radius: 5px; border: none;">
-                <option value="classic">Classic Mode</option>
-                <option value="memory">Memory Mode</option>
-                <option value="shuffle">Shuffled Mode</option>
-                <option value="bolt">Bolt Mode</option>
-                <option value="ultimate">Ultimate Mode</option>
-            </select>
-            <br>
-            <button onclick="createPVPGame()" style="width: 80%; margin: 10px 0;">Create Game (Host)</button>
-            <div style="margin: 10px 0; font-weight: bold;">- OR -</div>
-            <button onclick="showJoinInput()"
-                style="width: 80%; margin: 10px 0; background: linear-gradient(45deg, #FF512F, #DD2476);">Join
-                Game</button>
-        </div>
-
-        <div id="pvpHostArea" style="display: none;">
-            <h3>Your Game Code:</h3>
-            <div id="myPeerId"
-                style="font-size: 2em; letter-spacing: 2px; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; user-select: text; margin: 15px 0; border: 2px dashed var(--secondary);">
-                Generating...</div>
-            <p>Share this code with your friend to play!</p>
-            <div style="margin-top: 20px;">
-                <span class="loader"
-                    style="display: inline-block; width: 20px; height: 20px; border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: #fff; animation: spin 1s ease-in-out infinite;"></span>
-                Waiting for opponent...
-            </div>
-            <button onclick="cancelPVP()"
-                style="margin-top: 20px; background: rgba(255, 255, 255, 0.1);">Cancel</button>
-        </div>
-
-        <div id="pvpJoinArea" style="display: none;">
-            <h3>Enter Host Code:</h3>
-            <input type="text" id="remotePeerIdInput" placeholder="Enter Code Here"
-                style="padding: 15px; font-size: 1.2em; border-radius: 8px; border: none; width: 80%; text-align: center; margin: 15px 0; background: rgba(255, 255, 255, 0.9); color: #333;">
-            <br>
-            <button onclick="joinPVPGame()" style="width: 60%; margin-top: 10px;">Connect & Play</button>
-            <br>
-            <button onclick="cancelPVP()" style="margin-top: 10px; background: rgba(255, 255, 255, 0.1);">Back</button>
-        </div>
-
-        <div id="pvpStatus" style="color: #ff4754; margin-top: 15px; min-height: 24px;"></div>
     </div>
 
     <!-- Tournament Setup Screen -->
@@ -566,11 +461,9 @@
         <h3>Classic Game Rules:</h3>
         <ul style="text-align: left; padding: 0 20px; font-size: 0.95em;">
             <li>Players take turns placing their mark (X or O) in an empty square.</li>
-            <li>The first player to get three of their marks in a row (up, down, across, or diagonally) is the
-                winner.
+            <li>The first player to get three of their marks in a row (up, down, across, or diagonally) is the winner.
             </li>
-            <li>When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends
-                in a
+            <li>When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends in a
                 draw.</li>
         </ul>
     </div>
@@ -647,8 +540,7 @@
     <!-- Tournament Results Screen -->
     <div id="tournamentResults"
         style="display: none; background: rgba(42, 42, 114, 0.9); padding: 30px; border-radius: 15px; margin: 20px 0; width: 90%; max-width: 500px; text-align: center; border: 2px solid var(--secondary); box-shadow: 0 0 20px rgba(0, 159, 253, 0.5);">
-        <h2 id="tournamentWinner" style="color: gold; font-size: 2em; margin-bottom: 15px;">Champion: Player X
-        </h2>
+        <h2 id="tournamentWinner" style="color: gold; font-size: 2em; margin-bottom: 15px;">Champion: Player X</h2>
         <h3>Final Score</h3>
         <p id="tournamentFinalScoreP1" style="font-size: 1.2em;">Player 1: X points</p>
         <p id="tournamentFinalScoreP2" style="font-size: 1.2em;">Player 2: Y points</p>
@@ -663,46 +555,36 @@
     <div id="aboutGameScreen"
         style="display: none; background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 8px; margin: 15px 0; width: 90%; max-width: 600px; text-align: left; line-height: 1.6;">
         <h2>About the Game</h2>
-        <p>Strategic Tic Tac Toe is a fresh take on the classic game, adding memory challenges and spatial
-            twists that
+        <p>Strategic Tic Tac Toe is a fresh take on the classic game, adding memory challenges and spatial twists that
             make every round more unpredictable and exciting. With multiple modes and a tournament feature, it's
             designed for both casual fun and serious face-offs.</p>
 
         <h3>Game Modes:</h3>
         <ul>
             <li><strong>Classic Mode</strong><br>
-                The original Tic Tac Toe experience with visible moves and standard rules. A familiar favorite
-                for quick
+                The original Tic Tac Toe experience with visible moves and standard rules. A familiar favorite for quick
                 and casual games.</li>
             <li><strong>Memory Mode</strong> – <em>Concept by Nithin Varma</em><br>
-                A twist where the board is hidden after each turn. Players must remember their moves — one
-                mistake can
+                A twist where the board is hidden after each turn. Players must remember their moves — one mistake can
                 flip the outcome.</li>
             <li><strong>Shuffled Grid Mode</strong> – <em>Concept by Nithin Varma</em><br>
-                The grid slightly shifts positions after each move, testing your memory and spatial tracking.
-            </li>
+                The grid slightly shifts positions after each move, testing your memory and spatial tracking.</li>
             <li><strong>Ultimate Tic Tac Toe</strong> – <em>Discovered online</em><br>
-                A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. While there's no
-                single
+                A popular variant where each cell in a 3×3 grid is its own Tic Tac Toe board. While there's no single
                 creator, a widely played version was developed by Michael Xing.</li>
             <li><strong>Bolt Mode</strong> – <em>A New Strategic Challenge!</em><br>
-                <p>Bolt Mode is a fast-paced variant of Tic-Tac-Toe where marks disappear based on placement
-                    order,
+                <p>Bolt Mode is a fast-paced variant of Tic-Tac-Toe where marks disappear based on placement order,
                     creating a dynamic and strategic gameplay experience.</p>
                 <strong>How It Works:</strong>
                 <ul>
                     <li><strong>Standard Tic-Tac-Toe Rules:</strong> Players aim to get three in a row just like
                         traditional Tic-Tac-Toe.</li>
-                    <li><strong>Limited Marks:</strong> Each player can have a maximum of three marks (X's or
-                        O's) on
+                    <li><strong>Limited Marks:</strong> Each player can have a maximum of three marks (X's or O's) on
                         the board at a time.</li>
-                    <li><strong>Disappearing Marks:</strong> When a player places their fourth mark, the oldest
-                        mark
-                        automatically disappears, ensuring only three marks remain on the grid at all times.
-                    </li>
+                    <li><strong>Disappearing Marks:</strong> When a player places their fourth mark, the oldest mark
+                        automatically disappears, ensuring only three marks remain on the grid at all times.</li>
                     <li><strong>Strategic Advantage:</strong> Players must carefully plan their moves, as marks
-                        disappear over time. This allows new winning opportunities to emerge while also
-                        disrupting the
+                        disappear over time. This allows new winning opportunities to emerge while also disrupting the
                         opponent's strategy.</li>
                 </ul>
             </li>
@@ -714,187 +596,7 @@
         <button onclick="hideAboutScreen()" style="margin-top: 15px;">Back to Modes</button>
     </div>
 
-    <!-- Firebase SDK (ES Modules) -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getDatabase, ref, set, onValue, push, remove, child, get, update }
-            from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-
-        // Firebase Config
-        const firebaseConfig = {
-            apiKey: "AIzaSyDGr7NHo1cyOckpu01EyMpYCZq6hxQIae4",
-            authDomain: "tictactoe-a5175.firebaseapp.com",
-            databaseURL: "https://tictactoe-a5175-default-rtdb.firebaseio.com/",
-            projectId: "tictactoe-a5175",
-            storageBucket: "tictactoe-a5175.firebasestorage.app",
-            messagingSenderId: "699303131940",
-            appId: "1:699303131940:web:312fc17698082cca3451b1",
-            measurementId: "G-NPXRY46ZTN"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-
-        // PVP Service attached to window for global access
-        window.pvpService = {
-            roomId: null,
-            mySide: null, // "X" or "O"
-            gameRef: null,
-            movesRef: null,
-
-            createGame: async function (mode) {
-                // Generate 4-char ID
-                const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-                let id = "";
-                for (let i = 0; i < 4; i++) id += chars.charAt(Math.floor(Math.random() * chars.length));
-                this.roomId = id;
-                this.mySide = "X";
-                this.gameRef = ref(db, 'games/' + id);
-                this.movesRef = ref(db, 'games/' + id + '/moves');
-
-                // Initial State
-                await set(this.gameRef, {
-                    host: "X",
-                    mode: mode,
-                    turn: "X", // X always starts
-                    state: "waiting",
-                    createdAt: Date.now()
-                });
-
-                // Clear old moves if any (reused ID edge case)
-                await set(this.movesRef, null);
-
-                this.listenToGame();
-                return id;
-            },
-
-            joinGame: async function (id) {
-                this.roomId = id;
-                this.gameRef = ref(db, 'games/' + id);
-                this.movesRef = ref(db, 'games/' + id + '/moves');
-
-                const snapshot = await get(this.gameRef);
-                if (snapshot.exists()) {
-                    this.mySide = "O";
-                    // Update Guest Presence
-                    await update(this.gameRef, {
-                        guest: "O",
-                        state: "active"
-                    });
-                    this.listenToGame();
-                    return true;
-                } else {
-                    return false;
-                }
-            },
-
-            sendMove: function (data) {
-                if (!this.roomId) return;
-                // Add timestamp for ordering
-                data.timestamp = Date.now();
-                push(this.movesRef, data);
-            },
-
-            sendReset: function () {
-                if (!this.roomId) return;
-                // We send a reset action as a 'move' or a special flag
-                // Let's use push to 'moves' for simplicity to trigger listener? 
-                // OR update state? peerJS used {type: 'reset'} in data stream.
-                // Let's stick to pushing an action to ensure sequence.
-                push(this.movesRef, { type: 'reset', timestamp: Date.now() });
-            },
-
-            sendModeChange: function (mode) {
-                if (!this.roomId) return;
-                // Update the mode in the game state directly
-                update(this.gameRef, { mode: mode });
-                // Also push an action so clients know *when* it happened relative to moves?
-                // Actually standard state listener on 'mode' is better.
-            },
-
-            listenToGame: function () {
-                // Listen for State/Mode Changes
-                onValue(this.gameRef, (snapshot) => {
-                    const data = snapshot.val();
-                    if (!data) return; // Room deleted
-
-                    // Connection established
-                    if (data.guest && data.state === 'active') {
-                        // Notify UI that opponent connected
-                        if (window.onPVPConnected) window.onPVPConnected();
-                    }
-
-                    // Sync Mode
-                    if (data.mode && data.mode !== window.currentMode) {
-                        if (window.toggleMode) window.toggleMode(data.mode, true);
-                    }
-                });
-
-                // Listen for Moves/Actions
-                // Use 'child_added' to get them in order
-                const movesQuery = this.movesRef;
-                // We could use limitToLast(1) but we want all since join?
-                // Actually getting *new* moves is key. onValue gives all? 
-                // child_added gives previous ones too on init.
-                // We need to handle that or ignore old ones? 
-                // Simplest: Just process them. If index occupied, ignore? 
-                // Better: keep a local "lastProcessedTimestamp".
-
-                let isInitialLoad = true;
-                // Simple hack: Timer to ignore initial dump? No, risky.
-                // Better: Just execute them. The game state is idempotent-ish.
-                // But processing "reset" again would be bad. 
-                // Standard Firebase pattern: Handle child_added.
-
-                onValue(this.movesRef, (snapshot) => {
-                    const moves = snapshot.val();
-                    if (!moves) return;
-
-                    // Sort by timestamp just in case
-                    const moveList = Object.values(moves).sort((a, b) => a.timestamp - b.timestamp);
-
-                    // Filter: Only process moves we haven't seen? 
-                    // Or just let the existing handlePVPData logic decide? 
-                    // PeerJS logic "received" data. 
-                    // We need to bridge this.
-
-                    // Problem: onValue triggers on ANY change with ALL data.
-                    // We want stream.
-                    // Let's use child_added instead?
-                });
-
-                // Real listener
-                import("https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js").then(mod => {
-                    const onChildAdded = mod.onChildAdded;
-                    onChildAdded(this.movesRef, (data) => {
-                        const move = data.val();
-                        // Ignore my own moves? PeerJS logic handled "receive".
-                        // In PeerJS I sent to *other*. Here I listen to *all*.
-                        // So I will "receive" my own moves too.
-                        // My local logic executes my move instantly. 
-                        // So I should ignore moves where player === mySide?
-                        // EXCEPT for Reset?
-
-                        if (move.player === this.mySide && move.type === 'move') {
-                            return; // Ignore my own echoed move
-                        }
-
-                        if (window.handlePVPData) window.handlePVPData(move);
-                    });
-                });
-            }
-        };
-    </script>
-
     <script>
-        // Global Game State (Legacy)
-        // PVP State
-        // Removed PeerJS vars.
-        let isPVPMode = false;
-        let myPlayerSide = null; // 'X' or 'O' set by PVPService
-        const pvpSetupScreen = document.getElementById('pvpSetupScreen');
-
         let currentPlayer = 'X';
         let gameBoard = Array(9).fill('');
         let gameActive = true;
@@ -950,120 +652,6 @@
         // Store timeout IDs for animations
         let fadeOutTimeoutId = null;
         let clearCellTimeoutId = null;
-
-        // PVP Functions
-        // PVP Functions
-        async function createPVPGame() {
-            const selectedMode = document.getElementById('pvpModeSelect').value;
-            // Set mode locally
-            toggleMode(selectedMode);
-
-            document.getElementById('pvpInitialOptions').style.display = 'none';
-            document.getElementById('pvpHostArea').style.display = 'block';
-
-            try {
-                const id = await window.pvpService.createGame(selectedMode);
-                document.getElementById('myPeerId').textContent = id;
-                myPlayerSide = "X";
-                // Helper to link UI to Service Listener
-                window.onPVPConnected = () => {
-                    document.getElementById('pvpStatus').textContent = "Connected!";
-                    startPVPGame();
-                };
-            } catch (err) {
-                console.error(err);
-                document.getElementById('pvpStatus').textContent = "Error creating game: " + err.message;
-            }
-        }
-
-        function showJoinInput() {
-            document.getElementById('pvpInitialOptions').style.display = 'none';
-            document.getElementById('pvpJoinArea').style.display = 'block';
-        }
-
-        async function joinPVPGame() {
-            const hostId = document.getElementById('remotePeerIdInput').value.trim().toUpperCase();
-            if (!hostId) {
-                document.getElementById('pvpStatus').textContent = "Please enter a code!";
-                return;
-            }
-
-            document.getElementById('pvpStatus').textContent = "Connecting...";
-
-            try {
-                const success = await window.pvpService.joinGame(hostId);
-                if (success) {
-                    document.getElementById('pvpStatus').textContent = "Connected!";
-                    myPlayerSide = "O";
-                    startPVPGame();
-                } else {
-                    document.getElementById('pvpStatus').textContent = "Game not found!";
-                }
-            } catch (err) {
-                console.error(err);
-                document.getElementById('pvpStatus').textContent = "Connection Failed: " + err.message;
-            }
-        }
-
-        // Renamed/Removed setupConnection since logic is in Service
-
-        // This is called by Service listener
-        window.handlePVPData = function (data) {
-            console.log("Received PVP Data from Firebase:", data);
-
-            if (data.type === 'start') {
-                // Legacy PeerJS START. Firebase handles this via presence check.
-            } else if (data.type === 'move') {
-                // Move Sync
-                if (data.player && currentPlayer !== data.player) {
-                    console.warn(`Sync: Force turn to ${data.player}`);
-                    currentPlayer = data.player;
-                    updateStatus();
-                }
-
-                if (currentMode === 'ultimate') {
-                    handleUltimateClick(data.boardIndex, data.cellIndex, true);
-                } else {
-                    handleClick(data.index, true);
-                }
-            } else if (data.type === 'reset') {
-                resetGame(true);
-            }
-            // Mode sync handled by 'mode' listener in Service
-        }
-
-        function startPVPGame() {
-            isPVPMode = true;
-            document.getElementById('pvpSetupScreen').style.display = 'none';
-            modeToggleButtons.style.display = 'flex';
-
-            resetGame();
-            updateStatus();
-        }
-
-        function cancelPVP() {
-            // No easy 'disconnect' in Firebase without auth? 
-            // Just local reset.
-            resetToMainMenu();
-        }
-
-        function resetToMainMenu() {
-            isPVPMode = false;
-            // Clear Service State if needed?
-            window.pvpService.roomId = null;
-
-            myPlayerSide = null;
-
-            document.getElementById('pvpInitialOptions').style.display = 'block';
-            document.getElementById('pvpHostArea').style.display = 'none';
-            document.getElementById('pvpJoinArea').style.display = 'none';
-            document.getElementById('pvpSetupScreen').style.display = 'none';
-            document.getElementById('pvpStatus').textContent = "";
-            document.getElementById('remotePeerIdInput').value = "";
-
-            modeToggleButtons.style.display = 'flex';
-            toggleMode('classic');
-        }
 
         const roasts = [
             // Light & Playful + Slightly Savage
@@ -1145,7 +733,7 @@
             return ultimateBoard[boardIndex].every(cell => cell !== '');
         }
 
-        function toggleMode(mode, fromPeer = false) {
+        function toggleMode(mode) {
             console.log(`toggleMode entered. Requested mode: ${mode}. Current mode: ${currentMode}`); // Log entry
             // Allow re-clicking computer mode to bring up setup if it was somehow hidden
             if (currentMode === mode && mode !== 'computer') {
@@ -1157,24 +745,9 @@
             currentMode = mode; // Update global mode immediately
             console.log(`toggleMode: Set currentMode to ${currentMode}`);
 
-            // PVP Sync
-            if (isPVPMode && !fromPeer && window.pvpService.roomId) {
-                window.pvpService.sendModeChange(mode);
-            }
-
-            // PVP Setup Logic
-            if (currentMode === 'pvp') {
-                classicBoard.style.display = 'none';
-                ultimateBoardElement.style.display = 'none';
-                rulesDescriptions.forEach(el => el.classList.remove('active'));
-                pvpSetupScreen.style.display = 'block';
-                modeToggleButtons.style.display = 'none';
-                return;
-            }
-
             // Update UI button styles - Ensure computer button is highlighted correctly
             document.querySelectorAll('.mode-toggle button').forEach(btn => {
-                let isActive = (btn.id === (currentMode + 'Mode')) || (currentMode === 'computer' && btn.id === 'computerMode') || (currentMode === 'pvp' && btn.id === 'pvpMode');
+                let isActive = (btn.id === (currentMode + 'Mode')) || (currentMode === 'computer' && btn.id === 'computerMode');
                 // Handle special case button IDs if they don't follow the pattern
                 if (!document.getElementById(currentMode + 'Mode') && currentMode === 'computer') {
                     isActive = (btn.id === 'computerMode');
@@ -1398,17 +971,9 @@
             document.getElementById('roast').classList.remove('roast-visible'); // Hide roast
         }
 
-        function handleUltimateClick(boardIndex, cellIndex, fromPeer = false) {
+        function handleUltimateClick(boardIndex, cellIndex) {
             console.log(`handleUltimateClick called: board=${boardIndex}, cell=${cellIndex}. Current player: ${currentPlayer}. AI Mode: ${isPlayingAgainstAI}`); // Log entry
             if (!gameActive) return;
-
-            // PVP Check
-            if (isPVPMode && !fromPeer) {
-                if (currentPlayer !== myPlayerSide) {
-                    showRoast("Wait for your turn!");
-                    return;
-                }
-            }
 
             // Check if this is a valid move
             // Either nextBoardIndex is -1 (any board) or matches the current boardIndex
@@ -1417,11 +982,6 @@
             if ((nextBoardIndex === -1 || nextBoardIndex === boardIndex) &&
                 smallBoardWinners[boardIndex] === '' &&
                 ultimateBoard[boardIndex][cellIndex] === '') {
-
-                // PVP: Send move
-                if (isPVPMode && !fromPeer && window.pvpService.roomId) {
-                    window.pvpService.sendMove({ type: 'move', boardIndex: boardIndex, cellIndex: cellIndex, player: currentPlayer });
-                }
 
                 // Make the move
                 ultimateBoard[boardIndex][cellIndex] = currentPlayer;
@@ -1507,20 +1067,11 @@
             board.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${randomRotate}deg)`;
         }
 
-        function handleClick(index, fromPeer = false) {
-            // Prevent processing if already handling a click (ONLY for local clicks)
-            // Remote moves must always proceed or queue, otherwise we get desync.
-            if (isProcessingClick && !fromPeer) {
+        function handleClick(index) {
+            // Prevent processing if already handling a click
+            if (isProcessingClick) {
                 console.log("Rapid click detected, ignoring.");
                 return;
-            }
-
-            // PVP Check: If it's PVP mode, not from peer, and not my turn -> Block
-            if (isPVPMode && !fromPeer) {
-                if (currentPlayer !== myPlayerSide) {
-                    showRoast("Wait for your turn!");
-                    return;
-                }
             }
 
             // Lock the function
@@ -1532,29 +1083,13 @@
                 if (!gameActive || gameBoard[index] !== '') { // Check if game active AND cell is empty
                     // Handle invalid move (roast, switch turn for memory/shuffle, etc.)
                     if (gameBoard[index] !== '' && (currentMode === 'memory' || currentMode === 'shuffle')) {
-                        // In PVP, invalid moves should not switch turns locally for the clicker if it's just a roast
-                        // But for Memory/Shuffle, a wrong click normally switches turns.
-                        // For PVP simplicity, let's keep it syncing BUT we need to tell the other peer IF the turn switches.
-                        // However, syncing invalid moves is complex. Let's block turn switching for invalid moves in PVP Memory/Shuffle for now or handle it carefully.
-                        // Decision: Allow local roast but maybe don't switch turn in PVP to avoid desync if packet lost? 
-                        // Better: If it causes turn switch, we MUST sync it. PeerJS logic handles 'move' which implies successful placement.
-                        // We might need a special 'turnSwitch' event if no move is made. 
-                        // For now: Stick to standard. If not from peer, we execute logic. If turn switches, how does peer know?
-                        // Peer receives 'move' data only on successful placement in standard logic.
-                        // If we switch turn here without placement, we need to send a 'skip' or 'foul' event.
-
                         showRoast(roasts[Math.floor(Math.random() * roasts.length)]);
-
-                        if (!isPVPMode) { // PVP: Don't switch turn on foul for simplicity to avoid desync
-                            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-                            updateStatus();
-                            if (currentMode === 'shuffle') shuffleBoard();
-                        } else {
-                            // In PVP, maybe just roast and keep turn?
-                            // Yes, keeps it simple. No turn switch on memory/shuffle errors in PVP.
-                        }
-
-                        console.log("handleClick (Memory/Shuffle - invalid move): Player lost turn (or just roasted).");
+                        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                        updateStatus();
+                        if (currentMode === 'shuffle') shuffleBoard();
+                        console.log("handleClick (Memory/Shuffle - invalid move): Player lost turn, triggering AI move.");
+                        // No 'return' here needed as the finally block will execute.
+                        // Trigger AI move *after* releasing the lock in finally.
                     } else if (gameBoard[index] !== '' && currentMode === 'bolt') {
                         // Log the specific invalid move case for Bolt
                         console.log(`handleClick Bolt: Invalid move on occupied cell ${index}. Cell contains: ${gameBoard[index]}. Showing roast.`);
@@ -1576,16 +1111,10 @@
                         console.log(`handleClick: Cell ${index} occupied in ${currentMode} mode. Returning before placing mark.`);
                         return;
                     }
-                    // If we reach here, it must be a memory/shuffle invalid click where the player was switched (or not in PVP), so we proceed.
+                    // If we reach here, it must be a memory/shuffle invalid click where the player was switched, so we proceed to the finally block to potentially trigger AI.
                     console.log(`handleClick: Invalid move logic complete for memory/shuffle on cell ${index}. Proceeding to finally.`);
 
                 } else { // --- Valid Move --- Only execute if cell was empty and game active
-
-                    // PVP: Send move to peer if valid and local
-                    if (isPVPMode && !fromPeer && window.pvpService.roomId) {
-                        window.pvpService.sendMove({ type: 'move', index: index, player: currentPlayer });
-                    }
-
                     const cell = document.querySelector(`[data-index="${index}"]`);
 
                     // Bolt Mode: Check for oldest mark removal BEFORE placing the new one
@@ -1729,12 +1258,6 @@
             if (isTournamentMode) {
                 const currentPlayerName = currentPlayer === 'X' ? tournamentPlayers[0].name : tournamentPlayers[1].name;
                 statusText = `Current Player: ${currentPlayerName} (<span style="color: ${playerColor}">${currentPlayer}</span>)`;
-            } else if (isPVPMode) {
-                // PVP Status
-                const myRole = (myPlayerSide === 'X') ? 'Host' : 'Guest';
-                const opponentRole = (myPlayerSide === 'X') ? 'Guest' : 'Host';
-                const turnText = (currentPlayer === myPlayerSide) ? "Your Turn" : "Opponent's Turn";
-                statusText = `${turnText} (${currentPlayer}) - You are ${myPlayerSide} (${myRole})`;
             } else if (isPlayingAgainstAI) {
                 const difficultyDisplay = aiDifficulty.charAt(0).toUpperCase() + aiDifficulty.slice(1);
                 const modeDisplay = currentMode.charAt(0).toUpperCase() + currentMode.slice(1);
@@ -1759,14 +1282,8 @@
             statusDisplay.innerHTML = statusText;
         }
 
-        function resetGame(fromPeer = false) {
+        function resetGame() {
             console.log(`Executing resetGame... isPlayingAgainstAI: ${isPlayingAgainstAI}, isTournamentMode: ${isTournamentMode}`); // Log entry with state
-
-            // PVP Sync
-            if (isPVPMode && !fromPeer && window.pvpService.roomId) {
-                window.pvpService.sendReset();
-            }
-
             gameBoard.fill('');
             gameActive = true;
             currentPlayer = 'X';
