@@ -1275,8 +1275,9 @@
         }
 
         function handleClick(index, fromPeer = false) {
-            // Prevent processing if already handling a click
-            if (isProcessingClick) {
+            // Prevent processing if already handling a click (ONLY for local clicks)
+            // Remote moves must always proceed or queue, otherwise we get desync.
+            if (isProcessingClick && !fromPeer) {
                 console.log("Rapid click detected, ignoring.");
                 return;
             }
